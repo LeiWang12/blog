@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式一</title>
+		<script>
+			(function(){
+				//正则表达式其实就是一个字符串,用来校验另一个字符串是否符合某种格式要求
+				//用\d可以匹配一个数字，\w可以匹配一个字母或数字
+				//eg:'00\d' 可以匹配'000' 但无法匹配'00a'
+				//'00\w' 可以匹配'00a'
+				//\d\d\d 可以匹配'012'
+				//'\w\w\w' 可以匹配 'aaa'
+				// '.'可以匹配任意字符
+				
+				//上面说的是固定长度的字符串，下面说下变长的字符串
+				
+				//'*'表示任意个字符，'+'表示至少一个字符
+				//'?'表示0或1个字符 {n}表示n个字符 {n-m}表示n-m个字符
+				//'[]'表示范围，eg：'[a-zA-Z0-9_]' 可以匹配任意一个字母数字下划线
+				//'^'表示行的开头，'^\d'表示必须以数字开头
+				//'$'表示行的结束，'\d$'表示必须以数字结束 
+				
+				//基础知识准备好，可以上代码了
+				//创建正则表达式有两种方法
+				var re1 = /ABC\-123/; //第一种
+				var re2 = new RegExp('ABC\\-123');//第二种
+				
+				console.log(re1); 
+				console.log(re2);
+				console.log(re1.test('ABC\123'));//false
+				console.log(re2.test('ABC-123'));//true
+				
+				//匹配开头为3个数字+’-‘+结尾为3-8个数字
+				var re = /^\d{3}\-\d{3,8}$/  
+				console.log(re.test('010-12345'));//true
+				
+				//11位数字  平常啥玩意是11位的  对！手机号
+				re=/^\d{11}/ 
+				console.log(re.test('12233333332'))//true
+				
+				//完善校验手机号
+				re=/^[1][3|5|7|8][0-9]\d{8}/ //第一位为1 第二位是3或5或7或8 最后接八位数字
+				console.log(re.test('12233333332'))//false
+				console.log(re.test('13901066666'))//true
+				
+				//校验邮箱：开始至少有一个数字或字母或.+@+任意个小写字母或数字+'.'+任意个小写字母
+				re=/^[a-zA-Z0-9.]+[@][a-z0-9]*[.][a-z]*$/
+				console.log(re.test('someone@gmail.com'))//true
+				console.log(re.test('someone#163.com'));//false
+				
+			})()
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

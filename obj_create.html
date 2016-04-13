@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//昨天我们介绍了js面向对象的基础知识,包括两种创建对象的方法:
+			//1.Object.__proto__
+			//2.Object.create()
+			//js对每个创建的对象都会设置一个原型，指向它的原型对象
+			//例如我们有个Array对象
+			var arr = [1,2,3]
+			//原型链是arr-->Array.prototype-->Object.prototype-->null
+			//所以Array和Object有的方法，arr都可以继承
+			
+			//当我们创建一个函数时
+			function say(){
+				return 'hello'
+			}
+			//原型链是say-->Function.prototype-->Object.prototype-->null
+			//原型链介绍到这里
+			//今天介绍另一种创建对象的方法，熟悉java的同学都知道new关键字，js中也有！
+			//除了直接用{...}创建对象，可以用构造函数来创建
+			function Person(name){
+				this.name = name;
+				this.say = function(){
+					return 'hello,'+this.name+'!'
+				}
+			}
+			
+			//我们创建一个Xiaohong
+			var Xiaohong = new Person('wanghong')
+			console.log(Xiaohong.name);//wanghong
+			console.log(Xiaohong.say());//hello,wanghong!
+			//原型链:Xiaohong-->Person.prototype-->Object.prototype-->null
+			//在创建一个Xiaoming
+			var Xiaoming = new Person('xiaoming')
+			console.log(Xiaohong.say)
+			console.log(Xiaoming.say)
+			console.log(Xiaohong.say()==Xiaoming.say())//false
+			//可以看到Xiaohong的say方法和Xiaoming的say方法虽然代码相同，
+			//但并不相等，为什么？留给大家思考，如果想让它相等应该怎么写呢?
+			
+			//留个疑问，明天揭晓，知道的同学也可以回复评论!
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

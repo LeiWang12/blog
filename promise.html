@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//回顾：昨天介绍了js中异步执行函数的方法：使用AJAX
+			//常见写法是：
+			request.onreadystatechange = function () {
+    			if (request.readyState === 4) {
+        			if (request.status === 200) {
+        				//返回成功的回调函数
+            			return success(request.responseText);
+        			} else {
+        				//返回失败的回调函数
+            			return fail(request.status);
+        			}
+    			}
+			}
+			//上述写法虽然实现了js中异步调用，但异步操作和回调函数写到一起，使得代码很不清晰！
+			
+			//有没有改善的方法呢？必须有，在ES6中退出了Promise对象
+			//定义：用来传递异步操作的消息。它代表了某个未来才会知道结果的事件（通常是一个异步操作），并且这个事件提供统一的 API，可供进一步处理。
+			//是不是太抽象？来一个通俗的：
+			//Promise把Ajax操作和回调函数分离，而它充当了两者之间的信使，当异步执行返回结果时，promise去通知回调函数
+			//Promise 对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和 Rejected（已失败）
+			//还不通俗？只能看代码了，我们想要实现的效果：
+			var ajax = ajax.get(url);
+			ajax.ifSuccess(success)
+				.ifFail(fail)
+				
+			//下面我们来看一下Promise到底怎么用
+			//promise可以直接new出来，构造方法入参是一个函数func
+			//func必须有两个入参resovle和reject
+			function func(resovle,reject){
+				......
+			}
+			//p1负责执行func函数
+			var p1 = new Promise(func)
+			//当func执行成功后会告诉Promise对象，然后执行以下代码：
+			var p2 = p1.then(function(resule){
+				console.log('success')
+			})
+			//反之，如果func执行失败，会执行以下代码：
+			var p3 = p1.catch(function(reason){
+				console.log('fail')
+			})
+			
+			//注意：p2和p3的区别就是then和catch,这样写的好处是把原有异步流程，用同步执行的代码格式书写
+			//综上所诉:可见Promise最大的好处是在异步执行的流程中，把执行代码和处理结果的代码清晰地分离了
+			
+			
+			//Promise除了上述方法，还有其他API：
+			//如果我们有两个Promise对象p1和p2，而且想并行执行它们：
+			Promise.all([p1,p2]).then(function(result){
+				console.log('success')
+			}).catch(function(err){
+				console.log('fail')
+			})
+		
+		    //风云突变，现在只要p1和p2有一个执行成功就行了,谁先返回就用谁的结果:
+		    Promise.race([p1,p2]).then(function(result){
+				console.log('success')
+			}).catch(function(err){
+				console.log('fail')
+			})
+		   
+		    //总结：上述内容介绍了Promise的基础知识和常用6个API：
+		    Promise.resolve()
+			Promise.reject()
+			Promise.prototype.then()
+			Promise.prototype.catch()
+			Promise.all() // 所有的完成
+			Promise.race() // 竞速，完成一个即可
+			
+			//以后我们有机会介绍Promise的高级知识，小伙伴们看完别忘记订阅专栏!
+		</script>
+	</body>
+</html>

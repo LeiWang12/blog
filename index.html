@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<script>
+			//暴漏私有成员
+			var module1 = new Object({
+				count: 1,
+				m1: function() {
+					console.log('m1 function');
+				},
+				m2: function() {
+					console.log('m2 function');
+				}
+			})
+
+
+			//立即執行函數,不暴漏私有成员 
+			var module2 = (function(){
+				var count = 1;
+				var m1 = function() {
+					console.log('module2 function m1');
+				};
+				var m2 = function() {
+					console.log('module2 function m2');
+				};
+				return{
+					m1:m1,
+					m2:m2
+				}
+			})();
+			//給module1增加一個函數，module3是module1的子模塊
+			var module3 = (function(mod){
+				mod.m3=function(){
+					console.log('module3 m3 function')
+				};
+				return mod;
+			})(module1);
+			
+			function test() {
+//				console.log(module1.count);
+//				module1.m1(); 
+//				module1.m2();
+				console.log(module2.count);
+				module2.m1();
+				module2.m2(); 
+				
+				module3.m3();
+			}
+		</script>
+	</head>
+
+	<body onload="test()">
+
+	</body>
+
+</html>

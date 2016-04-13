@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//用两天时间介绍了面向对象的定义和对象的创建方法
+			//今天介绍下对象的继承，熟悉java的同学会比较亲切。
+			//js的对象继承主要有两种方式：原型链继承、class(ES6)继承
+		    //看代码 定义一个Animal函数
+		    function Person(name){
+		    	this.name = name
+		    }
+		    //给它添加一个方法run
+		    Person.prototype.run=function(){
+		    	console.log('running')
+		    }
+		    //现在我们基于Person创建一个Man
+		    function Man(name){
+		    	Person.call(this,name);
+		    }
+		    //小明发现自己是个Man,所以要集成它
+		    var xiaoming = new Man('xiaoming');
+		    
+		    console.log(xiaoming.__proto__==Man.prototype)
+		    //true
+		    console.log(xiaoming instanceof Man)
+		    //true
+		    
+		    console.log(xiaoming.__proto__.__proto__==Person.prototype)
+		    //false
+		    console.log(xiaoming instanceof Person)
+		    //false
+		    
+		    //这是为啥？
+		    //因为上面的原型链是：
+		    //xiaoming-->Man--->object-->null
+		    //但我们的本意是
+		    //xiaoming-->Man-->Person-->Object-->null
+		    
+		    //如果想实现上面的方式，需要借助一根棒子，这个棒子就是一个空对象F
+		    function F(){}
+		    //把F的原型指向Person
+		    F.prototype = Person.prototype;
+		    //Man的原型指向F
+		    Man.prototype=new F();
+		    //Man原型上的构造函数修改成Man,
+		    //Man.prototype.constructor = Man;
+		    var xiaoming = new Man('xiaoming');
+		    
+		    console.log(xiaoming.__proto__==Man.prototype)
+		    //true
+		    console.log(xiaoming instanceof Man)
+		    //true
+		    
+		    console.log(xiaoming.__proto__.__proto__==Person.prototype)
+		    //true
+		    console.log(xiaoming instanceof Person)
+		    //true
+		    
+		    
+			//除了上面介紹的原型链继承。在最新的ES6中引入class，使继承的代码编写更简单和易读
+			//直接看代码：class(Animal)包含了一个构造函数和一个定在在对象上的函数run(注意并没有function)
+			class Animal {
+				constructor(name) {
+					this.name = name;
+				}
+				run(){
+					console.log('running')
+				}
+			}
+			//接下来我们建一个子类Cat并且让它继承Animal,继承的关键字为extends
+			//给Cat类定义个属;于自己的方法say
+			class Cat extends Animal {
+				constructor(name) {
+					super(name);
+				}
+				run() {
+					return 'running, ' + this.name + '!';
+				}
+			}
+			// 验证是否继承:创建两只Cat对象，传入不同的名字
+			var kitty1 = new Cat('Kitty');
+			var kitty2 = new Cat('哆啦A梦');
+			
+			console.log(kitty1.name);//Kitty
+			console.log(kitty1.run());//running,Kitty
+			//上面是输出说明子类Cat重写了父类Animal的run方法
+			
+			//还记得昨天留下的疑问吗，今天这两个会相等吗？
+			console.log(kitty1.say == kitty2.say)//true
+			//答案是true，
+			//kitty1和kitty2都是新new出来的,为啥会相等呢？
+			//留给大家思考，想明白了证明你掌握了
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

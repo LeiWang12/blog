@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JSON</title>
+		<script>
+			//JSON是JavaScript Object Notation的缩写，它是一种数据交换格式。
+
+//			在JSON出现之前，大家一直用XML来传递数据。
+//			因为XML是一种纯文本格式，所以它适合在网络上交换数据。
+//			XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后回变得的很复杂
+			
+            //JSON其实是javascript的子集
+            //JSON规定字符集必须是UTF-8,字符串必须引用""
+            //在JavaScript中，我们可以直接使用JSON，因为JavaScript内置了JSON的解析。
+            //把任何JavaScript对象变成JSON，就是把这个对象序列化成一个JSON格式的字符串，这样才能够通过网络传递给其他计算机。
+			//如果我们收到一个JSON格式的字符串，只需要把它反序列化成一个JavaScript对象，就可以在JavaScript中直接使用这个对象了。
+			
+			//eg:把javascript对象序列化成JSON对象
+			var zhoujielun={
+				name:'小周',
+				age:12,
+				gender:true,
+				height:1.65,
+				grade:null,
+				'middle-school':'\"W3C\" Middle School',
+				skills:['Javascript','Java','Python','Lisp']
+			};
+			//输出："{"name":"小周","age":12,"gender":true,"height":1.65,"grade":null,"middle-school":"\"W3C\" Middle School","skills":["Javascript","Java","Python","Lisp"]}"
+			console.log(JSON.stringify(zhoujielun));
+			
+			//优化输出格式，可以加两个参数 如下
+			console.log(JSON.stringify(zhoujielun,null,' '));
+			//			"{
+//			"name": "小周",
+//			"age": 12,
+//			"gender": true,
+//			"height": 1.65,
+//			"grade": null,
+//			"middle-school": "\"W3C\" Middle School",
+//			"skills": [
+//				"Javascript",
+//				"Java",
+//				"Python",
+//				"Lisp"
+//			]}"
+
+
+			//也可以输出部分键值对
+			console.log(JSON.stringify(zhoujielun,["name"],' '));
+//			"{
+//				"name": "小周"
+//			}"
+
+			//stringify 第二个参数还可以传一个函数
+			//eg：把json中的值转换为大写字母
+			function convert(key, value) {
+				if (typeof value === 'string') {
+					return value.toUpperCase();
+				}
+				return value;
+			}
+			
+			console.log(JSON.stringify(zhoujielun,convert,' '));
+		
+		    //eg:把JSON对象反序列化成javascript对象
+		    console.log(JSON.parse('[1,2,3,true]'));
+		    console.log(JSON.parse('{"name":"xiaozhou","age":14}'));
+			
+			//parse也能传一个函数，用来转换解析出的属性
+			JSON.parse('{"name":"小明","age":14}', function (key, value) {
+    			if (key === 'name') {
+        			return value + '同学';
+    			}
+    			return value;
+			}); 
+			// Object {name: '小明同学', age: 14}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

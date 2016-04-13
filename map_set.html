@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function set_func() {
+				var s1 = new Set(); //空的set集合
+				var s = new Set([1, 2, 3]);
+				console.log(s); //{1,2,3}
+				s.add(4); //動態增加一個元素
+				console.log(s); //{1,2,3,4}
+				//彩蛋1：第一种循环迭代方式
+				for (var x of s) {
+					console.log(x);
+				}
+				//彩蛋2：第二种循环迭代方式
+				s.forEach(function(element) {
+					console.log(element);//1,2,3,4
+				})
+			}
+
+			function map_func() {
+				var m = new Map([
+					['Mike', 98],
+					['Jim', 94],
+					['Kaka', 95]
+				])
+				console.log(m);
+				console.log(m.get('Kaka'));
+				m.set("Lei", 90); //添加新的key-value
+				console.log(m);
+				console.log(m.has('Lei')); //是否存在key ‘lei’
+				m.delete('Lei'); //删除一组key-value
+				console.log(m); //Map {"Mike" => 98, "Jim" => 94, "Kaka" => 95, "Lei" => 90}
+				console.log(m.get('Lei')); //undefined
+				m.forEach(function(element, index, array) {
+					console.log(element + "," + index + "," + array);
+					/**
+					 * 98,Mike,[object Map]
+					 * 94,Jim,[object Map]
+					 * 95,Kaka,[object Map]
+					 */
+				})
+			}
+
+			function test() {
+				set_func();
+				//map_func();
+			}
+		</script>
+	</head>
+
+	<body onload="test()">
+	</body>
+
+</html>

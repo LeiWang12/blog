@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function sort_func(){
+				var arr=[10,2,20,3,1];
+				//1 10 2 20 3 数组的sort方法是转换成字符串比较后结果
+				console.log(arr.sort());
+				arr.sort(function(x,y){
+					if(x<y){
+						return -1;
+					}else if(x>y){
+						return 1;
+					}else{
+						return 0;
+					}
+				});
+				//1 2 3 10 20 友情提示：arr本身经过sort后已被修改
+				console.log(arr);
+				//思考:如果要输入20 10 3 2 1 应该肿么办呢？
+			}
+			sort_func(); 
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

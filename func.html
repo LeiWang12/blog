@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//调用此函数时会立即执行执行求和
+			function sum(arr) {
+				return arr.reduce(function(x, y) {
+					return x + y;
+				})
+			}
+			
+			//調用此函數不會立即執行
+			function lazy_sum(arr) {
+				var sum = function() {
+					return arr.reduce(function(x, y) {
+						return x + y
+					})
+				}
+				return sum;
+			}
+			
+			//闭包函数的实例 本来想实现输入：[1,2,3] 输出[1,4,9]
+			function count(){
+				var arr=[];
+				for(var i=0;i<=3;i++){
+					arr.push(function(){
+						return i*i
+					})
+				}
+				return arr;
+			}
+			
+			function count2(){
+				var arr=[];
+				for(var i=0;i<=3;i++){
+					console.log("i====="+i);
+					arr.push((function(n){
+						return function(){
+							return n*n
+						}
+					})(i))
+				}
+				return arr;
+			}
+			
+			
+			(function() {
+//				var result = sum([1, 2, 3, 4, 5]);
+//				console.log(result);
+//				
+//				var f=lazy_sum([1,2,3,4,5]);
+//				result = f();
+//				console.log(result);
+//				
+//				var results = count();
+//				console.log(results[0]);
+//				var f1 = results[0];
+//				console.log(f1());//16
+				
+				var results2 = count2(); 
+				var f2 = results2[3];
+				console.log(f2());//9
+			})();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+	   <script>
+	   		//上周末我们介绍了js是如何操作操作DOM的，主要有四类操作：增删查改
+	   		//今天我们介绍和操作DOM类似的Form表单元素,说他们相似，因为表单本身也是DOM树.
+	   		//Form和普通DOM元素最大的区别是它可以接受用户的输入
+	   		//常用的Form表单输入控件有：
+	   		
+	   		//文本框
+	   		<input type='text'/>
+	   		//密码框
+	   		<input type='password'/>
+	   		//单选框
+	   		<input type='radio'/>
+	   		//复选框
+	   		<input type='checkbox'/>
+	   		//下拉框
+	   		<select></select>
+	   		//隐藏框
+	   		<input type='hidden'/>
+	   		
+	   		//js获取form控件的值
+	   		var input = document.getElementById('text')
+	   		console.log(input.value)
+	   		//text、password、hidden、select都可以用上面方式获取值
+	   		
+	   		//对于单选框、复选框判断用户是否选中 用checked属性
+	   		<input type='radio' name='rad' id='rad1' value='1' checked>rad1
+	   		<input type='radio' name='rad' id='rad2' value='2'>rad2
+	   		
+	   		var rad1  = document.getElementById('rad1')
+	   		console.log(rad1.value);//1
+	   		console.log(rad1.checked)//
+
+			var rad2  = document.getElementById('rad2')
+	   		console.log(rad2.value);//2
+	   		console.log(rad2.checked)//false
+	   		
+	   		//通过了上面的简单介绍，我们知道了如何获取或设置FORM表单控件的值
+	   		//而获取用户输入后，我们的最终目的是要交给服务端以达到和用户交互的动作
+	   		//Form表单如何将数据交给服务端呢？
+	   		
+	   		//这里就引申出了另一个知识点：Form的提交
+	   		//有三种方法：
+	   		(一):通过form的onsubmit()函数
+	   		 <form name='reply' method='post' onsubmit='return validateForm();'
+	         	.......
+	         	<input type="submit" value="提交" >  
+	         </form>
+	   		//注意：  
+				//1.onsubmit属性内容一定要有return关键字，否则函数会直接执行，不会返回  
+				//2.validateForm一定要返回一个boolean类型的返回值  
+				//3.提交按钮要写成submit类型的
+
+
+			（二）：利用input类型为submit组件的onclick()函数
+  				//1.将上面form标签中的onsubmit="return validateForm()"属性，去掉。
+  				//2.为“提交”按钮添加onclick事件，如下：
+   				//<input type="submit" value="提交" onclick="return validateForm();">
+	   
+	   		(三)：利用button组件的onclick()函数，手动提交
+	   			//1.<input name="btnModify"  type="button" id="btnModify" value="提交" onclick="submitForm()">  
+	   			//2.在submitForm函数中调用submit()提交函数
+	   </script>
+	</body>
+</html>

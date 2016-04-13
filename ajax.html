@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//AJAX：Asynchronous JavaScript and XML，意思就是用JavaScript执行异步网络请求。
+			//昨天我们介绍了Form表单提交的三种方法，但在那三种提交的方式后，浏览器刷新页面，
+			//然后再新页面里告诉你操作是成功还是失败！
+			//总之，Web的工作原理就是一次HTTP请求对应一个页面
+			
+			//如果想让用户感觉虽然留在同一个页面，但每次操作后数据都可以不断的更新，那就要用到我们今天介绍的AJAX
+			
+			//下面我们就直接看代码，但要注意：AJAX请求都是异步的，响应是通过回调函数实现的
+			
+			//我们先分别定义返回成功、失败的回调函数
+			
+			function success(text){
+				console.log('success')
+			}
+			
+			function fail(text){
+				console.log('fail')
+			}
+			
+			//新建一个XMLHttpRequest对象
+			var request = new XMLHttpRequest();
+			
+			request.onreadystatechange = function () { // 状态发生变化时，函数被回调
+    		 if (request.readyState === 4) { // 成功完成
+    			// 判断响应结果:
+    			if (request.status === 200) {
+    			// 成功，通过responseText拿到响应的文本:
+    				return success(request.responseText);
+    			} else {
+    			// 失败，根据响应码判断失败原因:
+    			return fail(request.status);
+    			}
+    		 } else {
+    			// HTTP请求还在继续...
+    		 }
+    		}
+			// 发送请求:open有三个参数：
+			// 1GET、POST请求
+			// 2url地址
+			// 3默认为true 表示异步执行，如果未false，表示同步执行
+			request.open('GET', '/api/categories');
+			request.send();
+
+			console.log('请求已发送，请等待响应...');
+			
+			//如果你的网站需要支持低版本的IE，那么request需要换成ActiveXObject			
+			var request = new ActiveXObject('Microsoft.XMLHTTP'); // 新建Microsoft.XMLHTTP对象
+    
+			//如果同时兼容可以这么写:
+			var request;
+			if (window.XMLHttpRequest) {
+    			request = new XMLHttpRequest();
+			} else {
+    			request = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			
+			//同步、异步请求介绍完后，在工作中我们会经常遇到跨域请求
+			//比如：www.site1.com域名异步请求www.site2.com的url地址，即为跨域请求
+			//正常情况下是无法访问的！
+			
+			//是不是没有方法了呢？有的
+			//方法一、通过Flash插件发送HTTP请求，这种方式可以绕过浏览器的安全限制，但必须安装Flash，并且跟Flash交互。不过Flash用起来麻烦，而且现在用得也越来越少了
+			//方法二、通过在同源域名下架设一个代理服务器来转发，JavaScript负责把请求发送到代理服务器
+			//方法三、JSONP，它有个限制，只能用GET请求，并且要求返回JavaScript。
+			
+			//后面我会详细介绍跨域的文章！敬请期待！
+			
+		</script>
+	</body>
+</html>

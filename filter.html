@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function filterTest() {
+				//通过filter函数筛选出奇数
+				var arr = [1, 2, 4, 5, 6, 9, 10, 15];
+				var r = arr.filter(function(x) {
+					return x % 2 !== 0;
+				});
+				console.log(r);
+				//通过filter函数把数组中的空元素过滤掉
+				var arr2 = ['A', '', 'B', null, undefined, 'C', '  '];
+				var r2 = arr2.filter(function(s) {
+					return s && s.trim(); // 注意：IE9以下的版本没有trim()方法
+				});
+				console.log(r2);
+			}
+			//综合实例，求1-100数组中素有素数
+			function get_primes() {
+				var arr=[];
+				for (x = 1; x < 100; x++) {
+					arr.push(x);
+				}
+				var i = 2
+				var r = arr.filter(function(x) {
+					for (i = 2; i < x; i++) {
+						if (x % i == 0) {
+							break;
+						}
+					}
+					if (i == x) {
+						return x;
+					}
+				});
+				console.log(r);
+			} 
+			get_primes();
+			filterTest();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

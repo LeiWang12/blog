@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			// js的面向对象编程 
+			// 在高级语言例如java、c#中，面向对象是在掌握了数据类型、运算和函数API之后必须掌握的知识
+			// 面向对象是相对于C语言的面向过程来说的，它更接近认得思维模式，同理就更远离电脑的理解方式。
+			// 在java中，面向对象有两个基本的概念：
+			// 1、类：是对象的类型模板 例如:Person类来表示人这种类型，但不表示具体某个人
+			// 2、实例：是根据类创建的对象 例如：Xiaohong是根据Person来创建的实例，表示具体某个人
+			// 综上所述可得知：类和实例是面向对象的基本概念
+			
+			// 不过在js中，类和实例没有明显的区分，而是通过原型prototype来实现面向对象编程
+			// 例如我们有一个Person对象
+			  
+			Person={
+				first_name:'first_name',
+				last_name:'last_name',
+				run:function(){
+					console.log(this.first_name+this.last_name+' is running')
+				}
+			}
+			
+			//我们想根据Person这个类创建一个Xiaohong
+			Xiaohong={
+				first_name:'wang',
+				last_name:'hong'
+			}
+			
+			Xiaohong.__proto__=Person;
+			console.log(Xiaohong.first_name);//wang
+			console.log(Xiaohong.last_name);//hong
+			Xiaohong.run();//wanghong is running
+			
+			//之前我们在讲Date对象是，使用过new Date()方式,java里也有这种写法
+			//那么这里可不可以这么写：
+			//Xiaohong = new Person();//Error:object is not a function
+			//报错Person是个Object，而不是一个函数，所以不能new
+			
+			//JavaScript的原型链和Java的Class区别就在，它没有“Class”的概念，所有对象都是实例，所谓继承关系不过是把一个对象的原型指向另一个对象而已。
+			//例如我们现在又一个对象
+			Bird={
+				first_name:'first_name',
+				last_name:'last_name',
+				fly:function(){
+					console.log(this.first_name+this.last_name+' is flying')
+				}
+			}
+			
+		    // 让Xiaohong不再实现Person，而是Bird
+		    Xiaohong.__proto__=Bird;
+		    Xiaohong.first_name='wang';
+			Xiaohong.last_name='hong';
+			//Xiaohong.run();//Error:undefined is not a function
+			Xiaohong.fly();//wanghong is flying
+			// 所以Xiaohong就不会在有run方法,而是fly方法
+			
+			//------华丽的分割线------------------
+			//在工作中并不建议直接用__proto__，有低版本的浏览器会不支持
+			//建议大家用另一种方式Object.create()方法
+			
+			//我们写一个公共的创建Person对象的方法
+			function createPerson(first_name,last_name){
+				var p = Object.create(Person)
+				p.first_name = first_name;
+				p.last_name = last_name;
+				return p
+			}
+			
+			var Xiaohong = createPerson("wang","hong");
+			Xiaohong.run();//wanghong is running
+			console.log(Xiaohong.__proto__==Person);//true
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

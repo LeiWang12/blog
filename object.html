@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//从前有一个对象，它的名字叫baby
+			var baby={
+				name:'baby',
+				age:'18',
+				sex:'girl',
+			} 
+			
+			function js_Obj(){ 
+				baby.home='Beijing';//动态给object添加一个属性
+				console.log(baby.age);//18
+				console.log(baby['age']);//获取属性值的另一个写法
+				console.log(baby.home);//Beijing
+				delete baby.home;//动态刪除object的一個属性
+				console.log(baby.home);//undefined
+				//-----------分割线-----------
+				console.log('name' in baby);//判断一个属性是否属于这个object
+				console.log('toString' in baby);//继承过来的属性也属于这个object
+				console.log(baby.hasOwnProperty('age'));//要判断一个属性是否是xiaoming自身拥有的，而不是继承得到的
+			}
+		</script>
+	</head>
+	<body onload="js_Obj()">
+	</body>
+</html>

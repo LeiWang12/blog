@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<p id='p1'></p>
+		回顾：昨天介绍了js中浏览器对象： window、navigator、screen、location、document、history 包括它们的一些常用属性或方法 昨天最后我们介绍了document对象其实是html页面DOM的根节点，可以获取页面 中任何一个节点; 那么今天我们就介绍下js操作DOM的知识点 
+		首先明确js操作DOM都有哪几类操作： 1、添加DOM节点 2、删除DOM节点 3、查询DOM节点的内容 4、更新DOM节点的内容 可以用四个大字概括：增删查改！ 在'增删查改'之前还有一件重要的事,就是得先获得到DOM节点
+
+		<script>
+			(function() {
+				//(一)直接获取某个DOM节点或某组DOM节点的方法：
+				// 返回ID为'test'的节点：
+				var test = document.getElementById('test');
+				// 先定位ID为'test-table'的节点，再返回其内部所有tr节点：
+				var trs = document.getElementById('test-table').getElementsByTagName('tr');
+				// 先定位ID为'test-div'的节点，再返回其内部所有class包含red的节点：
+				var reds = document.getElementById('test-div').getElementsByClassName('red');
+				// 获取节点test下的所有直属子节点:
+				var cs = test.children;
+				// 获取节点test下第一个、最后一个子节点：
+				var first = test.firstElementChild;
+				var last = test.lastElementChild;
+				//除了上面的getElement*方法，还有querySelector和querySelectorAll方法
+				//但因为IE浏览器支持不是很好，所以要谨慎使用
+				// 通过querySelector获取ID为q1的节点：
+				var q = document.querySelector('#q')
+					// 通过querySelectorAll获取q1节点内的符合条件的所有节点：
+				var p = q.querySelectorAll('div>p')
+				//综上所述，上面的获取DOM节点，其实就是js对DOM的查询动作，进而可以获得节点中的文本等内容
+				//-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
+				//(二)、更新DOM
+				// 通过查询DOM拿到了某个节点后，我们可以更新其中的内容，甚至改变原有的节点的结构
+				// 通常也有两种方法：innerHTML(W3C标准)和innerText
+				// 先看第一种：
+				// 获取id=p1的节点
+				var p1 = document.getElementById('p1')
+				// 更新p节点内容为1234
+				p1.innerHTML = '1234'
+				// 还以在p节点中再插入其他dom节点,同时也修改了<p></p>的内部结构
+				p1.innerHTML = '123,<span id="sp">abc</span>';
+				
+				//再看第二种:
+				// 获取<p id="p1">...</p>
+				var p2 = document.getElementById('p2');
+				// 设置文本,但p2节点内容只会有文本，而自动过滤掉了html标签
+				p2.innerText = '123,<span id="sp">abc</span>';
+				
+				//----------------------------
+				
+				//除了上面更新dom节点的内容，我们工作中也经常遇到更新dom节点style
+				// 获取<p id="p1">...</p>
+				var p = document.getElementById('p1');
+				// 设置CSS:
+				p.style.color = '#ffaa00';
+				p.style.fontSize = '10px';
+				p.style.paddingTop = '2em';
+			})()
+		</script>
+
+	</body>
+
+</html>

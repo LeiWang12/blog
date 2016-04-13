@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			(function(){
+				var d = new Date();
+				console.log(d.getFullYear());//2016
+				console.log(d.getMonth());//现在是3月，这个会输出几？
+				console.log(d.getDate());//日期
+				console.log(d.getDay());//星期几
+				console.log(d.getHours());//小时
+				console.log(d.getMinutes());//分钟
+				console.log(d.getSeconds());//秒
+				console.log(d.getMilliseconds());
+				console.log(d.getTime());
+				
+				var d2 = new Date(2015, 5, 19, 20, 15, 30, 123);
+				console.log(d2) // Fri Jun 19 2015 20:15:30 GMT+0800
+				//我们发现上面输出的Fri 四月，
+				//这里有一个坑：js里月是从0开始的
+				
+				//时间戳 ---表示从1970年1月1日零时整的GMT时区开始的那一刻，到现在的毫秒数
+				var d3 = new Date(1459391314720)
+				console.log(d3.toLocaleString());//2016年3月31日 上午10:28:34
+				console.log(d3.toUTCString());//Thu, 31 Mar 2016 02:28:34 GMT
+				
+				//思考：为什么要引入时间戳概念？
+				
+				//解惑:假设浏览器所在电脑的时间是准确的，那么世界上无论哪个时区的电脑，它们此刻产生的时间戳数字都是一样的，
+				//所以，时间戳可以精确地表示一个时刻，并且与时区无关。
+				
+				//实战经验：在项目开发中，我们经常在获取Date对象后，需要转换为string或时间戳数值，方便后端服务保存。
+			    //同样在前台展示后端返回的时间数据时，也需要格式化成本地时区的格式，例如 2016-03-31 23:59 
+			    
+			    //明天我们在介绍了正则表达式后，将会写出一个通用的时间转换函数
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

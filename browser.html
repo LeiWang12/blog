@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浏览器对象</title>
+	</head>
+	<body>
+		<ul id="news">
+			<li>新闻一</li>
+			<li>新闻二</li>
+			<li>新闻三</li>
+		</ul>
+		<script>
+		    //今天针对前面讲的东西做个小结
+		    //我们介绍了字符串、数组、循环、常用函数和高阶函数(map/reduce/filter/sort)、
+		    //标准对象(Date/RegExp/JSON)以及js中面向对象(创建和继承)
+		    //今天我们介绍的也是一个对象--浏览器，大家每天都在交往的对象
+		    //也是js最依赖的一个对象，好比是植物和土壤的关系
+		    //常用的浏览器对象有：window、navigator、screen、location、document、history
+		    //上面提到的对象又有常用的属性,小二,上代码:
+		    (function(){
+		    	//window 获取浏览器窗口的内部宽度和高度
+		    	console.log(window.innerHeight);
+		    	console.log(window.innerWidth);
+		    	//window 获取浏览器窗口的外部宽度和高度
+		    	console.log(window.outerHeight);
+		    	console.log(window.outerWidth);
+		    	
+		    	//navigator 获取浏览器信息
+		    	//浏览器名称
+		    	console.log(navigator.appName)
+		    	//浏览器版本
+		    	console.log(navigator.appVersion)
+		    	//浏览器设置的语言
+		    	console.log(navigator.language)
+		    	//操作系统类型
+		    	console.log(navigator.platform)
+		    	//浏览器设定的user-Agent字符串
+		    	console.log(navigator.userAgent)
+		    	
+		    	//screen 获取屏幕的信息 例如屏幕分辨率是1920*1080
+		    	
+		    	//屏幕宽度
+		    	console.log(screen.width)//1920
+		    	//屏幕高度
+		    	console.log(screen.height)//1080
+		    	
+		    	//location 获取当前页面url的信息
+		    	//协议 eg：http
+		    	console.log(location.protocol)
+		    	//主机域名 eg：www.baidu.com
+		    	console.log(location.host)
+		    	//端口 eg:8080
+		    	console.log(location.port)
+		    	//路径
+		    	console.log(location.pathname)
+		    	//url所带的参数 eg：?a=1&b=1
+		    	console.log(location.search)
+		    	
+		    	//document 是当前html页面整个DOM节点的根节点
+		    	//document 可以获得html页面的任何一个节点,常用的方法是 根据ID和Tag Name
+		    	//对应的方法是getElementById()获取一个DOM节点
+		    	//getElementsByTagName()可以获取一组DOM节点
+		    	
+		    	//[object HTMLUListElement]
+		    	console.log(document.getElementById('news'))
+		    	//[object HTMLCollection]
+		    	console.log(document.getElementsByTagName('li'))
+		    
+		        //history 保存了浏览记录,可以后退和前进
+		        //具体方法是back()和forward()
+		    })()
+		    
+		</script>
+	</body>
+</html>
