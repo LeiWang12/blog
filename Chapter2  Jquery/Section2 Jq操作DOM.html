@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//昨天介绍了Jquery的众多获得DOM节点的方法，同学们在工作中估计早已烂熟于心。
+			//今天介绍Jquery如何操作DOM？
+			
+			//一、修改Text和HTML
+			
+			//如下html片段
+			<ul id='test'>
+				<li class='jq'>jquery</li>
+				<li class='js'>java &amp; script<li>
+			</ul>
+			
+			//先看如何获取Dom节点之间的text和html
+			$('ul li.js').text();//'java script' 注意只获取文本
+			$('ul li.js').html();//'java &amp; script' 
+			
+			//想要修改很easy,只要把要设置的值放在text和html方法的参数中即可:
+			$('ul li.jq').text('JQUERY');
+			$('ul li.jq').html('<span style="color:blue">JQUERY</span>');
+			
+			//text和html方法的本质区别顾名思义，一个只对文本生效，一个可以获取或插入一段html代码
+			
+			//二、修改css样式
+			
+			//要求：给上面的第一个li加黑色背景,红色字体
+			$('ul li.jq').css('background-color','#000').css('color','red')
+			
+			//想要获取一个节点的css样式
+			$('ul li.jq').css('background-color');//#000
+			
+			//想要清除一个节点的css样式
+			$('ul li.jq').css('background-color','');
+			
+			//上面是直接操作Dom元素的样式，如果想要操作元素的class属性怎么办？
+			$('ul li.jq').hasClass('jq') //true
+			$('ul li.jq').addClass('jq2')//增加class属性值 <li class='jq jq2'><li>
+			$('ul li.jq').removeClass('jq2')//删除class属性值 <li class='jq'><li>
+			
+			//三、添加DOM
+			
+			//给上面的ul添加一个li 
+			$('ul.test').append('<li class="html">html</li>')
+			//append方法不仅可以传入一个字符串参数，也可以传入一个DOM对象
+			// 创建DOM对象:
+			var ps = document.createElement('li');
+			ps.innerHTML = '<span>Pascal</span>';
+			// 添加DOM对象:
+			$('ul.test').append(ps);
+			
+			//执行完上述效果，会发现新增的li节点添加到ul的最后，如果想在最前面插入肿么办？
+			$('ul.test').prepend('<li class="html">html</li>')
+			
+			//如果要在第二个和第三个li之间增加一个li节点 
+			var jq = $('li.jq')
+			var js = $('li.js')
+			//在jq之后增加
+			jq.after('<li class="html">html</li>')
+			//在js之前增加
+			js.before('<li class="html">html</li>')
+			
+			//四、删除DOM remove()
+			
+			//删除ul下所有li节点
+			$('ul.test li').remove()
+		</script>
+	</body>
+</html>
