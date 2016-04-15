@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//前面我们用20天介绍了js的基础知识，希望对大家有所帮助
+			//再用四篇文章介绍下jquery，想必每个前端开发都和它有着深厚的感情
+			//关于Jquery的优缺点和引用方式就不赘述了,我们直接进入实践!
+			
+			//第一篇我们主要介绍jquery的选择器(查找和过滤)
+			
+			//js中获取Dom节点主要通过以下方式：
+			document.getElementById('id')
+			document.getElementsByName('name')
+			document.getElementsByTagName('div')
+			
+			//如果频繁使用上述代码，代码可读性会较差，jquery提供了更简洁的方式：
+			//根据ID查找
+			var ele = $('#id')//注意#
+			//根据TAG查找
+			var eles = $('p')
+			//根据CLASS查找
+			var eles = $('.classname')
+			//根据属性查找(name、type等)
+			var eles = $('[name=phone]')
+			//组合查找TAG+CLASS
+			var eles = $('tr.red')//class='red'的tr元素
+			//多项选择器
+			var eles = $('p,div') // 把<p>和<div>都选出来
+			var eles = $('p.red,div.green') // 把<p class='red'>和<div class='green'>都选出来
+			
+			//层级选择器,假设如下html代码：
+			<div class='test'>
+				<p class='p1'><span class='s1'></span></p>
+				<p class='p2'><span class='s2'></span></p>
+			</div>
+			
+			//获取s1的span
+			$('div.test span.s1')//注意层级之间的空格
+			$('p.p1 span.s1')
+			//以上两种方式都可以获得class=s1的span,因为div和p都是span的父节点
+			
+			//子选择器 $('parent>child'),因此上面的代码还能如下写：
+			$('div.test>span.s1')
+			$('p.p1>span.s1')
+				
+			//过滤器 它一般不单独使用，它通常附加在选择器上，帮助我们更精确地定位元素
+			//还是上面的html片段，看如下代码都是啥意思：
+			
+			//查找div下第一个p元素
+			$('div.test p:first-child');
+			//查找div下最后一个p元素
+			$('div.test p:first-child');
+			//查找div下最第n个p元素 n>1
+			$('div.test p:nth-child(n)');
+			//查找div下序号为奇数的p元素 
+			$('div.test p:nth-child(even)');
+			//查找div下序号为偶数的p元素 
+			$('div.test p:nth-child(odd)');
+			
+			----------------------------------------
+			//高级的查找和过滤
+			//除了上面介绍的利用jquery直接定位到要查找的元素，它也提供了方法可以基于某个jquery对象节点进行查找
+			//现在有如下html片段
+			<ul class='test'>
+				<li class="L1">1</li>
+				<li name="L2">2</li>
+				<li id="L3">3</li>
+			</ul>
+			
+			//find()方法分别获取对应的li节点
+			var ul = $('ul.test')
+			var L1 = ul.find('li.L1')
+			var L2 = ul.find('[name=L2]')
+			var L3 = ul.find('#L3')
+			
+			//parent()方法,获取节点的父元素
+			var L1 = $('li.L1')
+			var ul = L1.parent()//获得ul
+				ul = L1.parent('ul.test')//和上面同样的效果
+				
+			//next()、prev()查找位于同一层的元素
+			var L2 = $('[name=L2]')
+			var L1 = L2.prev();
+			var L3 = L2.next()
+			
+			//高级过滤函数
+			//filter() 可以过滤掉不符合选择器条件的节点
+			var a = $('ul.test li').filter('.L1')//ul下过滤掉第一个li节点
+			//filter(func()) 参数可以是一个函数
+			var a = $('ul.test li').filter(function(){
+				return this.innerHTML=='2'
+			})
+			//以上代码返回第二个li节点
+			
+			//map()方法把一个jQuery对象包含的若干DOM节点转化为其他对象
+			var a = $('ul.test li').map(function(){
+				return this.innerHTML
+			}).get()
+			//以上代码将返回一个数组[1,2,3]
+			
+			//first()、last()、slice()
+			$('ul.test li').first()//相当于$('ul.test li:first-child')
+			$('ul.test li').last()//相当于$('ul.test li:last-child')
+			$('ul.test li').slice(1,2)//返回第2、3个li节点,参数和数组的slice()方法一致
+			
+			//预告下一篇:Jquery操作DOM和事件响应
+			
+		</script>
+	</body>
+</html>
