@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//今天介绍JQuery第三节：事件和Ajax操作
+			//背景:由于不同的浏览器绑定事件的代码都不太一样，所以用jQuery来写代码，就屏蔽了不同浏览器的差异
+			
+			//第一部分:JQuery事件
+			
+			//(一)在DOM元素上绑定事件
+			
+			//on方法绑定一个事件
+			
+			//给id=btn的button绑定一个单击时间
+			$('#btn').on('click',function(){
+				console.log('Hello')
+			})
+			//还有一种简单的写法：
+			$('#btn').click(function(){
+				console.log('Hello')
+			})
+			
+			//下面列出Jquery能够绑定的事件
+			
+			//鼠标事件 
+			
+			click:鼠标单击事件
+			click: 鼠标单击时触发；
+			dblclick：鼠标双击时触发；
+			mouseenter：鼠标进入时触发；
+			mouseleave：鼠标移出时触发；
+			mousemove：鼠标在DOM内部移动时触发；
+			hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。
+			
+			//键盘事件
+			
+			keydown：键盘按下时触发；
+			keyup：键盘松开时触发；
+			keypress：按一次键后触发。
+			
+			//其他事件
+			
+			focus：当DOM获得焦点时触发；
+			blur：当DOM失去焦点时触发；
+			change：当<input>、<select>或<textarea>的内容改变时触发；
+			submit：当<form>提交时触发；
+			ready：当页面被载入并且DOM树完成初始化后触发。
+			
+			//其中ready是大家最常见的，它只作用于document对象，表示DOM完成初始化后触发，且只触发一次
+			//第一种写法:
+			$(document).ready(function(){
+				.......
+			})
+			//第二种简写:
+			$(function(){
+				......
+			})
+			//注意上面两种写法都用到了一个概念:匿名函数
+			
+			//(二)在DOM元素上解绑事件
+			
+			//有绑定，就有解绑
+			$('#btn').off('click')//一次性解绑的click事件处理函数
+			$('#btn').off()//一次性解绑所有类型的事件处理函数
+			
+			//(三)事件触发
+			//主要有两种方式:
+			
+			//用户鼠标或键盘触发,这个好理解
+			//比如:我们在button上绑定了鼠标单击事件,用户点击了button按钮,那么click事件处理函数就会执行
+			
+			//程序自动触发,相当于我们替用户点击了button按钮，也会触发click事件
+			$('#btn').click()
+			//另一种写法，触发器
+			$('#btn').trigger('click')
+			
+			
+			//第二部分:JQuery Ajax
+			//Javascript的ajax我们讲过，那些代码看起来繁琐，虽然我们用Promise进行了优化
+			//JQuery对Javascript的Ajax进行了封装，并将封装的ajax()、get()、post()方法绑定在了全局对象上
+			//上述方法都有两个参数:一个必选的请求url地址、参数配置对象
+			$.ajax(url,settings)
+			//也可以把url放到第二个参数里
+			$.ajax({
+				url:'url'
+				.....
+			})
+			
+			$.ajax('/api/getUser',{
+				async:true,//默认是true表示异步执行，false表示同步执行
+				method:'post',//默认为get，可指定为post、put
+				dataType:'json',//接受返回数据的格式json、xml等
+				data:'param=1',//发送的数据，可以是字符串、数组或Object
+				headers:'',//发送的额外的HTTP头
+				timeout:1000,//超时时间设置为1秒；
+				success:function(data){//请求成功时执行
+					//根据datatype参数值，data已经被解析成相应对象
+				},
+				error:function(errorThrown){//请求失败或超市时执行
+					
+				}
+			})
+			
+			//get 自动把第二个参数封装成querystring，相当于在请求地址后面加上?param=1
+			$.get('/api/getUser',{
+				name:'wang'
+			})
+			
+			//post 第二个参数默认被序列化为application/x-www-form-urlencoded
+			$.post('/api/getUser',{
+				name:'wang'
+			})
+			
+			//由于Json数据格式的使用越来越多，也提供了getJSON()
+			$.getJSON('/api/getUser',{
+				name:'wang'
+			}).done(function(data){
+				//data已经被解析成JSON对象
+			})
+		</script>
+	</body>
+</html>

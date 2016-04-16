@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//今天介绍JQuery最后一节:动画和扩展
+			//有同学会问Javascript不是也能实现动画吗?是的，但需要写大量代码，所以我在Js中没有介绍
+			//Jquery实现动画简单的不能再简单了，基本都是一个方法实现一个效果
+			
+			//下面介绍些常用动画方法,注意以下方法都是Jquery对象才有的，不是普通的DOM对象有的
+			
+			//一、显示和隐藏  show、hide、toggle 顾名思义, 它们的参数可以为空、时间、字符串
+			$('div').hide()//隐藏div
+			$('div').hide(2000)//2秒后隐藏div
+			$('div').hide('slow')//slow相当于0.6s后隐藏div
+			$('div').hide('fast')//fast相当于0.4s后隐藏div
+			$('div').hide('fast',function(){
+				//div隐藏后执行的函数
+			})
+			$('div').toggle()//div在显示和隐藏之间切换
+			//同理show方法也可以传入如上参数
+			
+			//二、淡入淡出  fadeIn、fadeOut、fadeToggle、fadeTo
+			$('div').fadeIn()
+			$('div').fadeIn(2000)
+			$('div').fadeOut('slow')
+			
+			//fadeToggle是在fadeIn和fadeOut之间切换,参数同上
+			$('div').fadeToggle()
+			$('div').fadeToggle('slow')
+			$('div').fadeToggle('slow',funciton(){
+				
+			})
+			
+			//fadeTo 增加了一个不同的参数 ：透明度，值在0和1之间，值越小越透明
+			$('div').fadeTo(300,0.3)//300毫秒后div的透明度变为0.3
+			
+			//三、滑动  slideDown、slideUp、slideToggle
+			$('div').slideDown(3000)//3秒后div向上滑动
+			$('div').slideDown('fast')
+			$('div').slideToggle()//div在向上和向下滑动之间切换
+			
+			//四、最后一个大招：自定义动画
+		 	//animate({params},speed,callback)我们需要传入的参数就是DOM元素最终的CSS状态和时间，jQuery在时间段内不断调整CSS直到达到我们设定的值
+		    //下面的参数表示以div当前状态为基准的css样式的绝对值变化
+		    $('div').animate({left:'250px',height:'200px',width:'400px'})
+		    
+		    //也可以是相对值变化,参数值加上+=
+			$('div').animate({left:'+=250px',height:'+=200px',width:'400px'})
+			 
+			//animate还可以加上时间和回调函数作为入参
+			$('div').animate(
+			 	{	
+			 		left:'250px',
+			 		height:'200px',
+			 		width:'400px'
+			 	},
+			 	3000,
+			 	function(){
+			 		//动画完成后执行的函数
+			 	}
+			 )
+			
+			//注意：所有的动画都是异步执行的，如果要在多个动画之间执行操作，一定要在回调函数中执行
+			
+			//五、动画停止 stop 
+			//不带参数表示停止一切动画
+			$('div').stop()
+			//可选的 stopAll 参数规定是否应该清除动画队列。默认是 false，即仅停止活动的动画，允许任何排入队列的动画向后执行。
+			//可选的 goToEnd 参数规定是否立即完成当前动画。默认是 false。
+			$('div').stop(stopAll,goToEnd)
+		</script>
+	</body>
+</html>
