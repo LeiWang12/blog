@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<!--
+    	HTML5 这几年比较火,它真正的定义是什么呢?
+		分狭义和广义:
+		狭义:就是HTML本身,仅仅指基于XML的HTML标识及相关语法。
+		广义:则包括网页的前端技术，即：狭义的HTML5 + CSS3 + JavaScript + Web Application API，可能还包括对SVG、插件等的支持。
+		
+		今天介绍第一章:HTML5语法和新增标签
+		
+		一、DOCTYPE及字符编码
+		1、DOCTYPE：<!doctype html>
+ 		2、字符编码：<meta charset="utf-8">
+		3、给文档指定语言：<html lang="zh-CN">
+			
+		二、大小写都可以
+		目的是为了兼容更多的文档，在HTML5里不区分大小写，但建议都小写
+		
+		三、布尔值
+		<input type='checkbox' checked/>
+		在这里checked写上就标识true，不写就标识false
+		
+		四、省略引号
+		下面三种写法都正确：
+		<input type="text"/>
+		<input type='text'/>
+		<input type=text/>
+		为了编码规范，推荐第一种
+		
+		1、不允许写结束符的标签：area , basebr , col， command , embed , hr , img , input , keygen , link , meta , param , source , track , wbr<xx/>
+		2、可以省略结束符的标签：li , dt , dd , p , rt , optgroup , colgroup , thread , tbody , tr , td , th省略</XXX>
+		3、可以完全省略的标签：html , head , body , colgroup , tbody
+    	-->
+        
+        <!--增加标签-->
+        <!--结构标签-->
+        <section><h1>独立内容区块，可以用h1~h6组成大纲，表示文档结构，也可以有章节、页眉、页脚或页眉的其他部分</h1></section>
+        
+        <article><h2>特殊独立区块，表示这篇页眉中的核心内容</h2></article>
+        
+        <aside><h3>标签内容之外与标签内容相关的辅助信息</h3></aside>
+		
+		<header><h4>某个区块的头部信息/标题</h4></header>
+		
+		<hgroup><h5>头部信息/标题的补充内容</h5></hgroup>
+		
+		<footer>底部信息</footer>
+		
+		<nav>
+			<a href="/html/">导航1</a> |
+			<a href="/css/">导航2</a> |
+			<a href="/js/">导航3</a> |
+			<a href="/jquery/">导航4</a>
+		</nav>
+
+		<figure>独立的单元，例如某个有图片与内容的新闻块</figure>
+		
+		<!--表单标签-->
+		<input type="email" placeholder="必须输入邮件"/><br />
+		<input type="url" placeholder="必须输入url地址" /><br />
+		<input type="number" name="points" min="允许选择的最小值" max="允许选择的最大值" value="默认值" /><br />
+		<input type="search" placeholder="搜索框" /><br />
+		<!--日期选择器-->
+		<input type="date" />
+		
+		<!--媒体标签-->
+		
+		<audio src="song.ogg" controls="controls">
+			音频：当浏览器支持此标签时会显示这里的内容
+		</audio>
+		
+		<video src="movie.ogg" width="320" height="240" controls="controls">
+			视频：当浏览器支持此标签时会显示这里的内容
+		</video>
+		
+		<!--其他功能标签-->
+		<mark>标注</mark>
+		
+		<progress max="100" value="10"></progress>
+		
+		<details>
+			<summary>点击我可以展开隐藏内容</summary>
+			<p>这部分内容初始化是被折叠隐藏的</p>
+			<p>这部分内容初始化是被折叠隐藏的</p>
+		</details>
+	</body>
+
+</html>
