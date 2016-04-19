@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//今天是Jqeury最后一篇---扩展
+			//为什么需要扩展？
+			//Jq给我们封装了很多方便的方法，简化了我们写的Javascript代码,而且支持链式编程！
+			
+			//比如我们要给span内字体高亮
+			$('span').css('backgroundColor', '#fffceb').css('color', '#d85030');
+			//看上面的代码已足够简单，但我们有很多地方都要设置字体高亮，你是否会一次一次的复制粘贴?
+			
+			//能不能把以上代码封装成一个方法,而且将它绑定在Jquery对象上，当我们想用的时候和调用Jquery原生方法一样
+			//扩展技能应运而生
+			//jQuery对象绑定一个新方法是通过扩展$.fn对象实现的：
+			$.fn.highFont=function(){
+				this.css('backgroundColor', '#fffceb').css('color', '#d85030');
+    			return this;
+			}
+			//注意到函数内部的this在调用时被绑定为jQuery对象，也就是说谁调用这个方法，谁就是this
+			//为啥最后要返回this呢?符合Jquery链式编程的习惯
+			//上面的函数function也可增加入参，比如将两个色值作为对象
+            var defaultParam={
+            	backgroundColor:'#fffceb',
+            	color:'#d85030'
+            }
+            //函数改进版:
+            $.fn.highFont2=function(params){
+				this.css('backgroundColor', defaultParam.backgroundColor).css('color', defaultParam.color);
+    			return this;
+			}
+            
+            //改进版的确挺好的，那是不是最终版呢？那得看用户还有没有要求
+            //很不幸，用户要求来了：函数入参默认值能不能由用户自己设定，如果没设定再使用默认值?
+            //能不能？能。。。。吧。。。。！
+            //Jquery给我们提供了一个辅助方法:
+            //$.extend(target, obj1, obj2, ...)
+            //它把多个object对象的属性合并到第一个target对象中，遇到同名属性，总是使用靠后的对象的值，也就是越往后优先级越高：
+			var params=$.extend({},defaultParam ,newParam );
+			//如果有newParam值，就把它赋予params，如果没有就用第二个参数的值
+			//所以我们可以把用户设定的参数赋给newParam对象，如果不设定就是用默认值
+			
+			//用户要求已满足，是否大功告成?  NO
+			//我们把默认参数值放在了全局变量上，这不是一个好地方
+			//应该物归原主，把它放到highFont2对象上:
+			$.fn.highFont2.defaultParam={......}
+			//在修改时也比较清晰明了:
+			$.fn.highFont2.defaultParam.backgroundColor='#333555'
+			
+			//完美！
+			//综上所述:我们在写Jquery扩展插件时要注意以下几点:
+			//1、给$.fn绑定函数，实现插件的代码逻辑；
+			//2、插件函数最后要return this;以支持链式调用；
+			//3、插件函数要有默认值，绑定在$.fn.<pluginName>.defaults上；
+			//4、用户在调用时可传入设定值以便覆盖默认值。
+			
+			//还没结束？是的
+			//如果我们扩展的某个插件只想给某了DOM元素使用，肿么办?
+			//想想我们之前介绍过的Jquery查询元素时的过滤器filter和遍历，可以如下写:
+			$.fn.highFont2 = function(){
+				return this.filter('span').each(function(){
+					//highFont2方法只给span元素使用
+					......
+				})
+			}
+			
+		</script>
+	</body>
+</html>
