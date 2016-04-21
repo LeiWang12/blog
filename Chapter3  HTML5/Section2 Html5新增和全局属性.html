@@ -1,0 +1,87 @@
+<!--
+	Html5第二章 新增/废除属性和全局属性
+	
+	新增的属性：表单属性、链接属性、其他属性
+	废除的属性: 可以被CSS3代替的属性、其他多余属性
+	
+	接下来我们代码详细介绍：
+-->
+<!DOCTYPE html>
+<!--一、新增属性-->
+<!--1、manifest属性定义哪些文件要缓存，将文件名写在cache.manifest文件里-->
+<html manifest="cache.manifest">
+	<head>
+		
+		<!--２、charset属性定义页面字符集-->
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<!--3、sizes属性定义图片大小-->
+		<link ref="icon" href="demo_icon.gif" type="image/gif" size="16*16"/>
+		
+		<!--4、target属性定义超链接打开方式-->
+		<base href="http://localhost/" target="_blank">
+		
+		<!--5、defer：推迟执行 浏览器页面运行完了在执行下载-->
+		<script defer type="text/javascript" src="a.js" ></script>
+		
+		<!--6、async：异步执行，下载同时浏览器继续运行下面的页面-->
+		<script async type="text/javascript" src="b.js" ></script>
+	</head>
+	<body>
+		
+		<!--7、media属性表示针对手持、电视设备进行优化-->
+		<a media="handheld" href="#">手持</a>
+		<a media="tv" href="#">电视</a>
+		
+		<!--8、start属性表示有序列表从几开始--> 
+		     reversed属性表示是否是倒序排列
+		<ol start="50" reversed>
+			<li>这是50</li>
+			<li>这是49</li>
+			<li>这是48</li>
+		</ol>
+		
+		<!--9、type属性定义menu类型，值有：toolbar、list、context-->
+		<menu type="toolbar" label="Menu">
+			<li><input type="checkbox">red</li>
+			<li><input type="checkbox">blue</li>
+		</menu>
+		
+		<div>
+			<!--10、scoped属性定义局部css样式，只在当前div内生效,建议不大量使用-->
+			<style type="text/css" scoped>
+				.......
+			</style>
+		</div>
+		<!--11、 sameless属性表示没有边框、边距-->
+		      srcdoc属性定义iframe中内容，如果没有设置就是src的值
+		      sanbox属性定义iframe可执行权限,
+		               值有:allow-form、allow-same-origin、allow-scripts、allow-top-navigation
+		<iframe seamless srcdoc="<h1>Hello World</h1>" sandbox="" src="http://www.baidu.com"></iframe>
+	
+		<!--二、全局属性-->
+		
+		<!-- 1、data-XXX:表示自定义属性  -->
+		<form data-type="myForm">
+			<!--2、hidden:隐藏一个标签-->
+			<label hidden>隐藏</label>
+			
+			<!--3、spellcheck:语法纠错提示-->
+			<textarea spellcheck="true"></textarea>
+			
+			<!--4、tabindex:表示用tab键切换获取焦点的顺序-->
+			<input type="text" tabindex="1" />
+			<input type="text" tabindex="2" />
+			
+			<!--5、contenteditable：对应标签内容可编辑修改-->
+			<table contenteditable="true">
+				<tr>
+					<td>数据一</td>
+					<td>数据二</td>
+				</tr>
+			</table>
+			<p contenteditable="true">编辑我</p>
+		</form>
+	</body>
+</html>
