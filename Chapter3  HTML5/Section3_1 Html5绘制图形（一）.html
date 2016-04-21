@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--今天给大家介绍一个HTML5最酷的元素--Canvas-->
+		
+		
+		<!--1、在body区域创建Canvas,默认是宽300 高150-->
+		<canvas id="canvas1" style="border: 1px solid;">
+			<p>当浏览器不支持canvas控件时，会显示这段内容，反之则会忽略掉</p>
+		</canvas> 
+		<!-- 指定大小通过width和height属性,注意没有px单位，符合W3C标准-->
+		<canvas id="canvas2" width="1024" height="768" style="border: 1px solid #333333;"></canvas>
+		
+		<!--如何操作canvas,在js脚本里操作-->
+		<script>
+			(function(){
+				//第一步通过ID获取cavans元素
+				var canvas = document.getElementById("canvas2")
+				
+				//第二步通过canvas的getContext方法获取上下文，参数'2d'
+				var context = canvas.getContext("2d")
+				
+				//在js中也可指定canvas大小
+				canvas.width="1366";
+				canvas.height="768";
+				
+				//第三步 用context在canvas绘制,canvas绘制是基于状态和执行的
+				//前提:canvas平面是一个坐标系,以左上角(0,0)位基础
+				
+				//绘制第一个图形：一条直线
+				//1、相当于笔尖从(100,100)坐标开始
+				context.moveTo(100,100);
+				//1、相当于笔尖从(700,700)坐标停止
+				context.lineTo(700,700);
+				//3、绘制动作
+				context.lineWidth=5;//线条的宽度
+				context.strokeStyle="#039702"//线条的颜色
+				//上面都是在设置canvas状态,必须调用下面执行方法才能完成
+				context.stroke();
+				
+				//绘制第二个图形：多边形,只要知道每个顶点的坐标即可
+				context.moveTo(100,100);
+				context.lineTo(700,700);
+				context.lineTo(100,700);
+				context.lineTo(100,100);
+				//给多边形填充颜色
+				context.fillStyle="darkgoldenrod";
+				//注意：必须调用fill方法
+				context.fill();
+				context.stroke();
+				
+				//如果我想绘制第二个图形
+				context.moveTo(200,100);
+				context.lineTo(800,700);
+				//注意我们本想设置第二个斜线的颜色为黑色，而且并没有设置宽度
+				context.strokeStyle="black";
+				context.stroke();
+				
+				//但是效果却不是我们想要的,发现上面的三角形边框颜色也变成黑的，而第二条斜线的宽度确实5px
+				//这里要在思考下canva是基于状态绘制图形的！陷入深深的沉思！
+				//如何把多个图形的状态分离呢
+				//在设置路径开始处加上
+				context.beginPath();
+				//在设置路径结束处加上
+				context.closePath();
+				
+			
+			})()
+		</script>
+	</body>
+</html>
