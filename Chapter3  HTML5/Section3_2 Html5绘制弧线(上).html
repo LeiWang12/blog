@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--HTML5绘制图形(二)-->
+		<!--绘制弧线(上))-->
+		<canvas id="canvas" style="border: 1px solid #333333;"></canvas>
+		
+		<script>
+			(function(){
+				//1、绘制一个园
+				var canvas = document.getElementById("canvas");
+				canvas.width=1360;
+				canvas.height=768
+				var context = canvas.getContext("2d");
+				context.lineWidth=5;
+				context.strokeStyle="#039702";
+				//arc方法有5个参数:圆心的横坐标x，圆心的纵坐标y,半径，开始的弧度，结束的弧度，true为逆时针/false为顺时针
+				context.arc(300,300,200,0,2.0*Math.PI,false)
+				//context.stroke();//(图1)
+				
+				//2、绘制多个弧线，用到昨天介绍的beginPath和closePath
+				//我们来绘制10个弧线
+				for(var i=0;i<10;i++){
+					context.beginPath();
+					//第5个参数默认false
+					context.arc(50+i*100,60,40,0,2*Math.PI*(i+1)/10);
+					context.closePath();
+					//context.stroke();
+				}
+				//通过上述代码效果看到，弧线是正确的，但弧线的两个顶点被用直线给连起来了(图2)
+				//为啥？这都是closePath()作怪,去掉它就是我们要的效果(图3)
+				//由此可以看出beginPath和closePath并不是必须成对出现的
+				
+				//3、给弧线填充颜色
+				//设置一个颜色
+				context.fillStyle="#039702";
+				for(var i=0;i<10;i++){
+					context.beginPath();
+					//第5个参数默认false
+					context.arc(50+i*100,60,40,0,2*Math.PI*(i+1)/10);
+					context.closePath();//对最终效果无影响
+					//context.fill();
+				}
+				//我们可以通过加上和去掉closePath方法，观察效果，发现填充效果没变化
+				//由此可以看出beginPath和closePath对fill并没有啥影响
+				
+				
+				//4、另一个绘制弧线方法arcTo
+				//参数包括两个点的坐标x1,y1,x2,y2,弧度半径
+				context.beginPath();
+				context.moveTo(100,100);//这里是移动到x0、y0坐标处
+				context.arcTo(500,100,500,500,300);
+				//context.stroke();
+				
+				//下面这段代码方便理解绘制的辅助线
+				context.beginPath();
+				context.moveTo(100,100);
+				context.lineTo(500,100);
+				context.lineTo(500,500);
+				//context.stroke();
+				
+				//综上所述：arcTo 方法在( x0, y0 )( x1, y1 )和( x1, y1 )( x2, y2 )两条线段上寻找切点，绘制圆弧（圆弧终止于( x1, y1 )( x2, y2 )这条线段的切点），而且，( x2, y2 )不一定是所绘制圆弧的终点，只是作为辅助线的结束位置
+				//大家可以修改上述代码的半径大小观察不同效果
+				
+				//5、quadraticCurveTo()方法绘制二次贝塞尔曲线
+				context.beginPath();
+				context.moveTo(100,100);//起始点
+				context.quadraticCurveTo(500,100,500,500);//控制点(500,100) 结束点(500,500)
+				context.stroke();
+				//控制点和结束点就是圆弧相对于水平线的切点
+				
+				//大家参考代码的时候可以逐个去掉context.stroke()注释
+			})()
+		</script>
+	</body>
+</html>
