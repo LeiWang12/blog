@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--昨天介绍了Canvas绘制弧线，今天介绍Canvas文字渲染-->
+		<!--首页定义一个Canvas-->
+		<canvas id="canvas" width="1360" height="1000" style="border: 1px solid #333333;"></canvas>
+	
+	    <!--书写js脚本操作Canvas-->
+	    <script>
+	    	(function(){
+	    		var canvas = document.getElementById("canvas");
+	    	    var ctx = canvas.getContext("2d");
+	    	    //基本绘制文字方法介绍
+	    	    canvasFont(ctx);
+	    	    //context.font属性详解
+	    	    fontDetail(ctx);
+	    	    //文字对齐
+	    	    textAlign(ctx);
+	    	    //在canvas画布中心书写文本
+	    	    canvasCenterText(canvas,ctx); 
+	    	    //测量一段文本的宽度
+	    	    measureCanvasText(ctx);
+	    	})()
+	    	
+	    	//渲染普通文字
+	    	function canvasFont(ctx){
+	    		//font三个参数：font-style样式 、font-size大小、字体
+	    		//如果没有设置font，默认值是"20px sans-serif",可见font至少有两个属性
+	    		ctx.font="bold 40px Arail";
+	    		
+	    		
+	    		//fillText(文字内容  文字开始横坐标  纵坐标)
+	    		ctx.fillText("Canvas文字渲染--fillText",40,100);
+	    		
+	    		//根据以往的经验有fillText 就会有strokeText，它的效果给文字添加边框
+	    		ctx.strokeText("Canvas文字渲染--strokeText",40,200);
+	    		
+	    		//其实上面两个方法还有第四个参数：强制规定文字所占区域的宽度
+	    		//下面表示文字所占宽度位100px
+	    		ctx.fillText("Canvas文字渲染--限定文字区域宽度",40,300,200);
+	    	
+	    		
+	    		//设置文字渐变色 用到新知识createLinearGradient方法
+	    		//绘制一条渐变线
+	    		var linearGrad = ctx.createLinearGradient(0,0,800,0);
+	    		//addColorStop 第一个参数是（开始填充）位置(0.0~1.0的数值)，第二个参数color是要填充的颜色
+	    		//至少要有两个addColorStop方法
+	    		linearGrad.addColorStop(0.0,"red");
+	    		linearGrad.addColorStop(0.25,"orange");
+	    		linearGrad.addColorStop(0.5,"yellow");
+	    		linearGrad.addColorStop(0.75,"green");
+	    		linearGrad.addColorStop(1.0,"purple");
+	    		ctx.fillStyle=linearGrad;
+	    		ctx.fillText("Cavas绘制文字渐变色--createLinearGradient",40,400)
+	    	}
+	    	
+	    	//context.font属性详解
+	    	function fontDetail(ctx){
+	    		//ctx.font最多可以添加四种参数:
+	    		//font-style:normal(默认)/italic(斜体字)/oblique(倾斜字体)
+	    		//font-weight:lighter/normal/bold/bolder
+	    		//font-size:30px
+	    		//font-family：支持@font-face,可设置多个字体，浏览器会逐个去适配
+	    		ctx.font="italic bold 30px Arail"
+	    		ctx.fillText("context.font参数详解",40,500)
+	    	}
+	    	
+	    	//文本对齐
+	    	function textAlign(ctx){
+	    		//1、水平对齐:textAlign(left\center\right)
+	    		ctx.textAlign="left";
+	    		ctx.fillText("ctx.textAlign='left'",500,600);
+	    		ctx.textAlign="center";
+	    		ctx.fillText("ctx.textAlign='center'",500,650);
+	    		ctx.textAlign="right";
+	    		ctx.fillText("ctx.textAlign='right'",500,700)
+	    		
+	    		//为了更加清楚，我们加一条基准线
+	    		ctx.strokeStyle="#888";
+	    		ctx.moveTo(500,500);
+	    		ctx.lineTo(500,750);
+	    		ctx.stroke();
+	    		
+	    		
+	    		//2、垂直对齐:textBaseLine(top\miidle\bottom\alphabetic(默认)\ideographic(方块文字)\hanging(印度文))
+	    		ctx.textBaseLine="top";
+	    		ctx.fillText("ctx.textBaseLine='top'",1200,600);
+	    		ctx.textBaseLine="middle";
+	    		ctx.fillText("ctx.textBaseLine='middle'",1200,650);
+	    		ctx.textBaseLine="bottom";
+	    		ctx.fillText("ctx.textBaseLine='bottom'",1200,700)
+	    		
+	    	}
+	    	
+	    	//在canvas画布中心书写文本
+	    	function canvasCenterText(cavans,ctx){
+	    		ctx.textAlign="center";
+	    		ctx.textBaseLine="middle";
+	    		ctx.fillText("CANVAS中心",cavans.width/2,cavans.height/2)
+	    	}
+	    	
+	    	//测量一段文本的宽度：注意宽度和文字的样式 大小 字体都有关系
+	    	function measureCanvasText(ctx){
+	    		alert("'测量我的长度'这几个字的长度"+ctx.measureText("测量我的长度").width);
+	    	}
+	    </script>
+	</body>
+</html>
