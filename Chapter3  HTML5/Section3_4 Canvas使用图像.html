@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas使用图像</title>
+	</head>
+	<body onload="draw('canvas')">
+		
+		<!--
+			Canvas绘制图像用到的方法:
+			//参数：img元素/image对象、绘制图像开始横、纵坐标
+			context.drawImage(img,x,y)
+			//参数：前三个含义同上，w和h表示图像的宽度和高度
+			context.drawImage(img,x,y,w,h)
+			//参数：img同上
+			//sx、sy:图像将要被绘制的区域的左上角坐标
+			//dx、dy:图像所要绘制区域的大小,结合上面的坐标可以得到被绘制图像的区域
+			//dx、dy:所要绘制的图像区域的左上角的画布坐标
+			//dw、dw:图像区域所要绘制的画布大小
+			context.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh)
+		-->
+		<canvas id="canvas" width="500" height="500" style="border: 1px solid;"></canvas>
+		<script>
+			function draw(id){
+				//创建一个500*500的矩形画布
+				var canvas=document.getElementById(id);
+				var context = canvas.getContext("2d");
+				context.fillStyle="#eeeeff";
+				context.fillRect(0,0,500,500);
+				
+				//创建一个Image对象,指定它的源文件
+				var image = new Image();
+				image.src="HTML5.png";
+				image.onload=function(){
+					//开始绘制图片
+					drawImage(context,image);
+				}
+			}
+			
+			function drawImage(context,image){
+				//1、表示在画布的坐标为(10,10)的点开始绘制图像
+				context.drawImage(image,10,10);
+				
+				//2、表示在画布的坐标为(250,250)的点开始绘制图像,并且图像的宽和高都等于100
+				context.drawImage(image,250,250,100,100);
+				
+				//3、表示被绘制的图像从左上角(50,50)点开始获取宽和高为200的区域
+				//将获得的图像绘制在画布(0,400)位起点，宽和高为50的区域里
+				context.drawImage(image,50,50,200,200,0,400,50,50);
+			}
+		</script>
+	</body>
+</html>
