@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>音频视频播放</title>
+	</head>
+
+	<body>
+		<!--今天介绍HTML5的音频和视频播放 -->
+		
+		<!--
+			一、音频
+			<audio>定义声音
+			<source>规定多媒体资源,可以是多个(浏览器支持的格式不同)
+			control属性供添加播放、暂停和音量控件
+		-->
+		
+			
+		<!--直接看代码-->
+		<audio src="你的音频文件路径" controls="controls"></audio>
+		<br />
+		<br />
+			
+		<!--如果不想使用系统的控制按钮,可以自定义按钮-->
+		<button onclick="clickA()">音频控制按钮</button>
+		<audio id="audio" src="你的音频文件路径"></audio>
+		<script>
+			function clickA() {
+				var a = document.getElementById("audio");
+				if (a.paused) {
+					a.play();
+				} else {
+					a.pause();
+				}
+			}
+		</script>
+		<p></p>
+		<!--
+			二、视频
+			标签
+			<video>定义视频
+			<source>规定多媒体资源,可以是多个(浏览器支持的格式不同)
+			属性
+			control
+			width、height(视频的宽和高)
+		-->
+		<video id="video">
+			<source src="你的mp3路径"/>
+			<source src="你的ogg路径"/>
+			你的浏览器不支持
+		</video>
+		<p></p>
+		
+		<button onclick="clickV()">播放/暂停</button>
+		<button onclick="clickB()">放大</button>
+		<button onclick="clickS()">缩小</button>
+		<script>
+			var v = document.getElementById("video")
+			//通过自定义按钮控制视频播放和暂停
+			function clickV(){
+				if(v.played){
+					v.pause();
+				}else{
+					v.play();
+				}
+			}
+			//通过自定义按钮把视频窗口变大
+			function clickB(){
+				v.width=400;
+				v.height=400;
+			}
+			
+			//通过自定义按钮把视频窗口变小
+			function clickS(){
+				v.width=200;
+				v.height=200;
+			}
+		</script>
+	</body>
+
+</html>
