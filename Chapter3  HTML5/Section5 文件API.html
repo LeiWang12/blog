@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5文件API</title>
+	</head>
+	<body>
+		<p>1、FileList对象和File对象</p>
+		<!--
+			1、FileList对象和File对象
+			下面代码支持一个或多个文件上传
+		-->
+		<input type="file" id="file" multiple>
+		<button onclick="showFileName()">文件上传</button>
+		<p></p>
+		<label>文件名称:</label><span id="name"></span>
+		<script>
+			function showFileName(){
+				//获取FileList对象
+				var files = document.getElementById("file").files;
+				var file;
+				//遍历FileList
+				var name = "";
+				for(var i=0;i<files.length;i++){
+					file = files[i];
+					name+=file.name+",";
+				}
+				//获取上传文件的名称
+				document.getElementById("name").innerHTML=name;
+			}
+		</script>
+		<p>2、Blob对象</p>
+		<!--
+			2、Blob对象:事实上，上面提到的file对象继承了Blob对象。
+			Blob对象的两个属性，size：表示一个对象的字节长度。type：表示一个对象的MIME类型，如若是未知类型返回空字符串。
+		-->
+		<input type="file" id="file2" multiple>
+		<button onclick="showFileInfo()">获取文件信息</button>
+		<p></p>
+		<label>文件大小:</label><span id="size"></span>
+		<p></p>
+		<label>文件类型:</label><span id="type"></span>
+		<script>
+			function showFileInfo(){
+				//获取FileList对象
+				var files = document.getElementById("file2").files;
+				var file = files[0];//我们只上传一个文件
+				//获取文件的大小、类型
+				document.getElementById("size").innerHTML=file.size;
+				document.getElementById("type").innerHTML=file.type;
+			}
+			//以上这些属性在项目中有啥用呢？
+			//用户浏览器上传文件到服务器,不能无限制的啥文件也往上传,那么程序就要去判断文件大小、格式。
+		</script>
+		
+		<!--
+			3、FileReader:用于异步读取文件内容
+			   5个对象:readAsBinaryString(File|Blob): 将文件读取为二进制码
+				   readAsText(File|Blob,encoding)：	将文件读取为文本
+				   readAsDataURL(File|Blob):将文件读取为 DataURL，也就是说可以将一个图片的结果指向给一个img的src属性
+				   readArrayBuffer(File|Blob)：
+				   abort(File|Blob)：中断
+			
+				6个事件:
+				   onabort(中断时触发)\onerror(出错时触发)\onload(文件读取成功完成时触发)
+				   onloadstart(读取开始时触发)\onprogress(读取中)\onloadend(读取完成触发，无论成功或失败)
+		-->
+		<!--下面介绍常用的两个功能:上传图片前在页面显示;上传文本文件前读取其内容-->
+		<p>
+			<label>请选择一个文件</label>
+			<input type="file" id="file3">
+			<button onclick="readAsDataURL()">读取图像</button>
+			<button>读取二进制数据</button>
+			<button onclick="readAsText()">读取文本文件</button>
+		</p>
+		<div id="result">
+			
+		</div>
+		<script>
+			var result = document.getElementById("result");
+			//将图片内容转换成base64编码的字符串，然后使用图片的data URI方式显示它
+			function readAsDataURL(){
+				var file = document.getElementById("file3").files[0];
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload=function(e){
+					var resultImg = document.getElementById("result");
+					resultImg.innerHTML='<img src="'+this.result+'"alt="">'
+				}
+			}
+			//读取文件的内容
+			function readAsText(){
+				var file = document.getElementById("file3").files[0];
+				var reader = new FileReader();
+				reader.readAsText(file);
+				reader.onload=function(e){
+					var resultText = document.getElementById("result");
+					resultText.innerHTML=this.result;
+				}
+			}
+		</script>
+	</body>
+</html>
