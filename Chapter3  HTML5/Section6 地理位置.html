@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5地理定位</title>
+	</head>
+	<body>
+		<!--
+			HTML5专门提供了Geolocation API来获取用户的地理位置
+			支持浏览器:Internet Explorer 9、Firefox、Chrome、Safari 以及 Opera 
+			该特性可能侵犯用户的隐私，除非用户同意，否则用户位置信息是不可用的。
+		-->
+		<div id="geoLocat" style="font-size: 50px;"></div>
+		<br><br>
+		<div id="geoWatch" style="font-size: 50px;"></div>
+		<script>
+			(function(){
+				getLocation();
+				getLocation2();
+			})()
+			
+			var geoLocat = document.getElementById("geoLocat")
+			function getLocation(){
+				//第1步：检测是否支持地理定位
+				if(navigator.geolocation){
+					//第2步：如果支持，则运行 getCurrentPosition() 方法
+					navigator.geolocation.getCurrentPosition(showPosition);
+				}else{
+					//如果不支持，则向用户显示一段消息
+					geoLocat.innerHTML="浏览器不支持geolocation属性"
+				}
+			}
+			
+			function showPosition(position){
+				//第3步:showPosition() 函数获得并显示经度和纬度
+				geoLocat.innerHTML="我的位置:<br/>纬度:"+position.coords.latitude+"<br/>经度:"+position.coords.longitude;
+			}
+			
+			//除了可以获得经纬度外还可以获得如下信息:
+			//coords.accuracy	位置精度
+			//coords.altitude	海拔，海平面以上以米计
+			//coords.altitudeAccuracy	位置的海拔精度
+			//coords.heading	方向，从正北开始以度计
+			//coords.speed	速度，以米/每秒计
+			//timestamp	响应的日期/时间
+			
+			//Geolocation还有两个神奇的方法:
+			//watchPosition():监控位置变化
+			//clearWatch():停止监控
+			
+			var geoWatch = document.getElementById("geoWatch")
+			function getLocation2(){
+				if(navigator.geolocation){
+					navigator.geolocation.watchPosition(showPosition2);
+				}else{
+					geoWatch.innerHTML="浏览器不支持geolocation属性"
+				}
+			}
+			
+			function showPosition2(position){
+				geoWatch.innerHTML="我的位置在变化:<br/>纬度:"+position.coords.latitude+"<br/>经度:"+position.coords.longitude;
+			}
+		</script>
+	</body>
+</html>
