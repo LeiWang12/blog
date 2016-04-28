@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5存储:本地/会话存储、数据库存储</title>
+	</head>
+	<body>
+		<!--
+			一、在客户端存储数据,提供了两种方式:
+			localStorage: 没有时间限制的数据存储
+			seesionStorage:针对一个 session 的数据存储
+			之前是通过浏览器cookie完成的，但cookie存储数据大小有限，而且效率也不高
+		-->
+		<script>
+			//存储name的值为wanglei:
+			localStorage.name="wanglei";
+			//读取值是可以先判断是否存在
+			if(localStorage.name){
+				//如果存在就打印
+				console.log(localStorage.name);
+			}else{
+				//如果不存在，就进行存储
+				localStorage.name="wanglei";
+			}
+			
+			//seesionStorage的用法和上面相同，区别是seesionStorage把变量值存储在一个会话里，只要
+			//是同一个会话，都可以从中取值，而localStorage主要用于页面之间传递值
+			
+		</script>
+		
+		<!--
+		         二、本地数据库存储---了解即可
+		          如果不是绝对需要，不要使用 Web SQL Database，因为它会让我们的代码更加复杂（匿名内部类的内部函数，回调函数等等）。
+		          对大多数情况下，本地存储或会话存储就能够完成相应的任务，尤其是你能够保持对象状态持久化的情况。
+		-->
+		
+		<script>
+			//创建数据库
+			var db = openDatabase("mydb","1.0","test db","1024*10")
+			//执行sql语句
+			db.transaction(function(tx){
+				//执行create语句
+				tx.executeSql("create table test(id TEXT,name TEXT)")
+				
+				//执行待条件的查询语句
+				tx.executeSql("select * from test where id=?",["1"],function(){
+					//sql执行成功执行的函数
+				},function(){
+					//sql执行失败执行的函数
+				})
+			})
+		</script>
+	</body>
+</html>

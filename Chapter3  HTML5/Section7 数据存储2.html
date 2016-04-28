@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html manifest="demo.appcache">
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5应用程序缓存</title>
+	</head>
+	<body>
+		<!--
+			应用缓存是把用户浏览的页面缓存在用户本地，即使没有网络用户也能查看页面
+			
+			主要有三个优势:
+			1、离线浏览 2、速度快  3、减少服务器压力
+			
+			所有主流浏览器几乎都支持
+		-->
+		
+		<!--
+			缓存方法:在html中加入manifest属性'manifest="demo.appcache"'
+			只要html页面加入manifest属性都会被还缓存
+			只要在manifest中指定的页面都会缓存
+		-->
+		
+		<!--
+			manifest页面主要包括三部分：
+			1、CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存
+			2、NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+			3、FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）
+		-->
+		
+		<!--manifest文件示例：#为注释-->
+		CACHE MANIFEST
+		# VERSION 如果要更新manifest文件，可以通过修改版本号
+		index.html
+
+		# 可以用*表示其他文件都不缓存
+		NETWORK:
+		* 
+
+		# 如果无法联网时,则用404.html替代/main目录的所有页面
+		FALLBACK:
+		/main/ 404.html
+		
+	</body>
+</html>
