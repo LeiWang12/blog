@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3简介和选择器详解一</title>
+		<!--
+		  CSS3的简历:
+		     是CSS技术的升级版本，CSS3语言开发是朝着模块化发展的。
+		     以前的规范作为一个模块实在是太庞大而且比较复杂，
+		     所以，把它分解为一些小的模块，更多新的模块也被加入进来。
+		     这些模块包括： 盒子模型、列表模块、超链接方式 、语言模块 、背景和边框 、文字特效 、多栏布局等。
+		-->
+		<!--
+			今天首先来介绍CSS3新增的选择器:
+			*属性选择器
+			*结构性伪类选择器
+			*选择器root、not、empty和target
+		-->
+		<style>
+		    /*一、新增属性选择器：[att*=val]、[att^=val]、[att$=val]*/
+			[id*="div"]{/*包含字符 eg:id的值包含div*/
+				color:blue
+			}
+			[id^="div"]{/*开始字符  eg:id的值以div开头*/
+				color:red
+			}
+			[id$="div"]{/*结束字符 eg:id的值以div结尾*/
+				color:orange
+			}
+			
+			/*二、结构性伪类选择器：
+			  伪类选择器
+			  伪元素选择器：first_line、first_letter、before、after
+			*/
+			
+			/*给第一行内容添加样式*/
+			p:first-line{
+				color:crimson
+			}
+			/*给第一个字母添加样式*/
+			p:first-letter{
+				color:blue
+			}
+			/*在li内容之前添加样式*/
+			li:before{
+				content:"---"
+			}
+			/*在li内容之后添加样式*/
+			li:after{
+				content:"我在li内容之后";
+				color:darkgreen
+			}
+			
+			/*三、选择器root、not、empty*/
+			
+			:root{/*给整个页面添加样式*/
+				background-color: gray;
+			}
+			/*如果我们给body添加背景颜色，会和上面的样式冲突吗？*/
+			body{
+				background-color: greenyellow;
+			}
+			
+			div *:not(h1){/*div中除去h1以外的其他元素添加样式*/
+				color: darkmagenta;
+			}
+			
+			:empty{/*表格中内容为空的单元格添加元素*/
+				background-color: #FFFFFF;
+			}
+			
+			:target{/*超链接跳转到对应区域添加样式*/
+				background-color: orangered;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">我是div1的文字内容</div>
+		<div id="div2">我是div2的文字内容</div>
+		<div id="div3">我是div3的文字内容</div>
+		<div id="div4">我是div4的文字内容</div>
+		<div id="content_div">我是content_div的文字内容</div>
+		
+		<p>这是第一行的内容<br/>这是第二行的内容</p>
+		<ul>
+			<li>列表1</li>
+			<li>列表2</li>
+			<li>列表3</li>
+			<li>列表4</li>
+			<li>列表5</li>
+		</ul>
+		
+		<!--:not-->
+		<div>
+			<h1>我是h1内容</h1>
+			<h2>我是h1内容</h2>
+			<h3>我是h1内容</h3>
+		</div>
+		<!--:empty-->
+		<table border="1">
+			<tr>
+				<td>td内容</td>
+				<td></td>
+			</tr><tr>
+				<td></td>
+				<td>td内容</td>
+			</tr>
+		</table>
+		<p></p>
+		<!--:target-->
+		<a href="#a1">菜单一</a>
+		<a href="#a2">菜单二</a>
+		<a href="#a3">菜单三</a>
+		<a href="#a4">菜单四</a>
+		
+		<div id="a1">
+			<h3>菜单一标题</h3>
+			<span>内容1</span>
+		</div>
+		<div id="a2">
+			<h3>菜单二标题</h3>
+			<span>内容1</span>
+		</div>
+		<div id="a3">
+			<h3>菜单三标题</h3>
+			<span>内容1</span>
+		</div>
+		<div id="a4">
+			<h3>菜单四标题</h3>
+			<span>内容1</span>
+		</div>
+	</body>
+</html>

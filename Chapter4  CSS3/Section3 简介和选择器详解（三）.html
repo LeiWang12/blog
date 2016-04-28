@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3选择器详解三</title>
+		<!--
+			一、属性选择器,今天介绍四个常用的:
+			hover:鼠标指针位于元素之上时
+			focus:元素获得焦点是
+		    active:元素被激活时
+		    checked:复选框被选中
+		    
+		          二、UI选择器，共有17中，下面以常用两个举例说明
+		    enabled: 元素在可用状态
+		    disabled:元素在禁用用状态
+		    
+		           三、通用兄弟元素悬着器 
+		     ~:与元素同等级的兄弟元素
+		 -->
+		<style>
+			/*鼠标在text上时添加背景颜色*/
+			input[type="text"]:hover{
+				background-color: blue;
+			}
+			
+			/*text获得焦点时添加背景颜色*/
+			input[type="text"]:focus{
+				background-color: aqua;
+			}
+			
+			/*text获得焦点并且一直按下鼠标时添加背景颜色*/
+			input[type="text"]:active{
+				background-color: blanchedalmond;
+			}
+			/*复选框选中后添加红色边框*/
+			input[type="checkbox"]:checked{
+				outline: 2px solid red;
+			}
+		</style>
+		<style>
+			/*给可用文本框添加背景颜色*/
+			input[type="text"]:enabled{
+				background-color: gold;
+			}
+			/*给禁用文本框添加背景颜色*/
+			input[type="text"]:disabled{
+				background-color: gray;
+			}
+		</style>
+		<style>
+		    /*子元素div的兄弟元素p*/
+			div ~ p{
+				background-color: darkviolet;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<input type="text" name="name">
+		<input type="text" name="age">
+		<br><br><br>
+		
+		<input type="checkbox">阅读
+		<input type="checkbox">旅游
+		<input type="checkbox">音乐
+		<input type="checkbox">发呆 
+		<br><br><br>
+			
+		<input type="text" id="text" value="可用文本框">
+		<input type="text" id="text" value="禁用文本框" disabled>
+		<br><br><br>
+			
+		<div>
+			<div>
+				<p>div的div的子元素</p>
+				<p>div的div的子元素</p>
+			</div>
+			<p>div的子元素</p>
+			<p>div的子元素</p>
+		</div>
+	
+	</body>
+</html>

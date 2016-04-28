@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS背景与边框相关样式</title>
+		<!--
+			一、背景相关属性:
+			background-clip:设置背景颜色填充区域
+			background-origin：设置背景图片的起始位置
+		-->
+		<style>
+			div{
+				background-color: black;
+				border:dashed 15px green;
+				padding: 30px;
+				color: white;
+				font-size: 30px;
+				font-weight: bold;
+				background-image: url(../img/shunda.png);
+				background-repeat: no-repeat;
+			}
+			.div1{/*背景颜色会充满整个区域*/
+				background-origin: border-box;
+				background-clip: border-box;
+			}
+			
+			.div2{/*背景颜色会充满边框以外的区域*/
+				margin-top: 40px;
+				background-origin: padding-box;
+				background-clip: padding-box;
+			}
+			
+			.div3{/*背景颜色只会充满内容区域*/
+				margin-top: 40px;
+				background-origin: content-box;
+				background-clip: content-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">示例1</div>
+		<div class="div2">示例2</div>
+		<div class="div3">示例3</div>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3选择器详解二</title>
+		<!--
+			1、选择器:first-child、last-child、nth-child、nth-last-child
+			针对一个父元素的第一个子元素、最后一个子元素、指定序号的子元素、第偶数个或奇数个元素进行指定
+		-->
+		<style>
+			li:first-child{
+				background-color: yellow;
+			}
+			li:last-child{
+				background-color: blue;
+			}
+			/*nth-child(position)*/
+			li:nth-child(3){/*正数第三个元素*/
+				background-color: orange;
+			}
+			li:nth-last-child(2){/*倒数第三个元素*/
+				background-color: darkgreen;
+			}
+		</style>
+		
+		<!--
+			2、 nth-of-type同类元素的第几个或偶奇数个
+			   nth-last-of-type同上，但是从最后一个子元素开始计数。
+		-->
+		<style>
+			h2:nth-of-type(odd){
+				background-color: yellow;
+			}
+			h2:nth-last-of-type(even){
+				background-color: darkolivegreen;
+			}
+		</style>
+		
+		<!--
+			only-child:选择属于其父元素的唯一子元素的每个元素
+		-->
+		<style>
+			/*只对ul下有一个li元素的节点生效*/
+			li:only-child{
+				background-color: indianred;
+			}	
+		</style>
+		
+	</head>
+	<body>
+		<!--对应上面1的示例代码-->
+		<h2>我的列表</h2>
+		<ul>
+			<li>列表1</li>
+			<li>列表2</li>	
+			<li>列表3</li>
+			<li>列表4</li>
+			<li>列表5</li>
+		</ul>
+		<br>
+		<!--对应上面2的示例代码 希望第一组和第三组h2添加背景颜色 -->
+		<h2>文章标题</h2>
+		<p>文章正文</p>
+		
+		<h2>文章标题</h2>
+		<p>文章正文</p>
+		
+		<h2>文章标题</h2>
+		<p>文章正文</p>
+		
+		<h2>文章标题</h2>
+		<p>文章正文</p>
+		
+		<!--对应上面3的示例代码-->
+		<ul>
+			<li>内容</li>
+		</ul>
+		
+		<!--only-child对下面的li没作用-->
+		<ul>
+			<li>内容</li>
+			<li>内容</li>
+		</ul>
+	</body>
+</html>
