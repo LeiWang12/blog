@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3动画--animation</title>
+		<!--
+			1、首先了解"关键帧":它的样式规则是由多个百分比构成的，如"0%"到"100%"之前，
+			分别在每一个百分比中，加上不同的属性，从而让元素达到一个不断变化的效果
+			eg：
+			@keyframes 动画名称{
+				0%{元素状态}
+				......
+				100%{元素状态}
+			}
+			
+			animation可定义的属性:
+			*animation-name:设置要@keyframe动画名称
+			*animation-duration:设置多长时间完成效果
+			*animation-timing-function:设置速度效果的速度曲线
+			*animation-delay:定义动画延迟多长时间后开始 
+			*animation-iteration-count:设置动画播放的次数
+			*animation-direction：设置手否轮流反向播放动画
+			*支持： IE10+、Firefox、Opera 和 Chrome、
+				  Safari 支持替代的 -webkit-animation 属性。
+		    *不同的浏览器在animation前加不同的前缀
+		    * 
+		-->
+		<style>
+			.box{
+				width:100px;
+				height:100px;
+				margin: 50px auto;
+				background-color: red;
+			}
+			.box:hover{
+				
+				/*引用动画：简写方式 hover动画名称 、1s内完成、加速、无限次播放*/
+				-webkit-animation:hover 1s ease-in infinite
+				
+				/*常规写法
+				-webkit-animation-name: hover;
+				-webkit-animation-duration: 1s;
+				-webkit-animation-timing-function: ease-in;
+				-webkit-animation-iteration-count: infinite;*/
+			}
+			/*定义鼠标滑过时动画效果 名称为hover*/
+			@-webkit-keyframes hover{
+				/*动画在0%时的属性值*/
+				0%{width:100px;height: 100px;border-radius:50% ;}
+				/*动画在50%时的属性值*/
+				50%{width:200px;height: 200px;border-radius:50% ;}
+				/*动画在100%时的属性值*/
+				100%{width:100px;height: 100px;border-radius:50% ;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

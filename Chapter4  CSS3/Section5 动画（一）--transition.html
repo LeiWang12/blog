@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3动画--transition</title>
+		<!--
+			1、transition:使css的属性值在一定的时间内平滑的过得。
+			这种效果可以再鼠标点击、划过、获得焦点或对元素任何改变中触发，
+			并圆滑的以动画效果改变css的属性值
+			可定义的属性:
+			*transition-property:设置要改变的属性名称
+			*transition-duration:设置多长时间完成效果
+			*transition-timing-function:设置速度效果的速度曲线
+			*transition-delay:定义动画延迟多长时间后开始 
+			* 
+			*支持： IE10+、Firefox、Opera 和 Chrome、
+				  Safari 支持替代的 -webkit-transition 属性。
+		-->
+		<style>
+			.box{
+				width:100px;
+				height:100px;
+				margin: 50px auto;
+				background-color: red;
+				/*简写方式 all代表所有css属性都会变化、1秒内完成动画、加速然后减速、延迟默认0*/
+				transition: all 1s ease-in-out;
+				/*常规写法(可选)*/
+				transition-property:width height border-radius;
+				transition-duration:1s;
+				transition-timing-function:ease-in-out;
+				transition-delay:0
+			}
+			/*鼠标滑过时div正方形属性要变化的值*/
+			.box:hover{
+				width:200px;
+				height:200px;
+				border-radius: 50%;
+				background-color: #777;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
