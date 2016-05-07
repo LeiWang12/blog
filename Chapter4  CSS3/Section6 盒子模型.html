@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3盒子类型</title>
+		<style>
+			/*
+			inline元素的特点是：
+　　			和其他元素都在一行上；
+　　			高，行高及顶和底边距不可改变；
+　　			宽度就是它的文字或图片的宽度，不可改变。
+			 */
+			.i{
+				background-color: aqua;
+				display: inline;
+				width:300px
+			}
+			
+			/*
+			 block元素的特点是：
+　　			  总是在新行上开始；
+　　		            高度，行高以及顶和底边距都可控制；
+　　			  宽度缺省是它的容器的100%，除非设定一个宽度
+			 **/
+			.b{
+				margin-top: 10px;
+				background-color: brown;
+				display: block;
+			}
+			
+			/*
+			 inline-block将对象呈递为内联对象，
+			   但是对象的内容作为块对象呈递。旁边的内联对象会被呈递在同一行内，
+			   允许空格(准确地说，应用此特性的元素呈现为内联对象，周围元素保持在同一行，但可以设置宽度和高度地块元素的属性)
+			 * */
+			.ib{
+				margin-top: 10px;
+				background-color: brown;
+				display: inline-block;
+				width:200px
+			}
+			
+			/*
+			 box-sizing属性值:border-box和content-box对比
+			 border-box:指定宽度和高度的框，并把边框和内边距放入框中。
+			 */
+			.box1{
+				box-sizing: border-box;
+				width:100px;
+				height:100px;
+				margin-top: 10px;
+				padding: 10px;
+				background-color: yellow;
+			}
+			/*
+			 content-box:指定宽度和高度的框，并在宽度和高度之外绘制元素的内边距和边框。
+			 */
+			.box2{
+				box-sizing: content-box;
+				width:100px;
+				height:100px;
+				margin-top: 10px;
+				padding: 10px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="i">inline元素</div>
+		<div class="i">inline元素</div>
+		<span class="b">block元素</span>
+		<span class="b">block元素</span>
+		<div class="ib">inline-block元素</div>
+		<div class="ib">inline-block元素</div>
+		
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</body>
+</html>
