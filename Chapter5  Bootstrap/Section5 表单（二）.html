@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>表单(checkbox、radio、button)</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<!--
+			1、复选框和单选框
+		-->
+		<form role="form">
+			<h3>案例1</h3>
+			<div class="checkbox">
+				<label>
+      				<input type="checkbox" value="">
+      					记住密码
+    			</label>
+			</div>
+			<div class="radio">
+				<label>
+      				<input type="radio" name="optionsRadios" id="optionsRadios1" value="love" checked>喜欢
+    			</label>
+			</div>
+			<div class="radio">
+				<label>
+      				<input type="radio" name="optionsRadios" id="optionsRadios2" value="hate">不喜欢
+    			</label>
+			</div>
+		</form>
+		<!--
+			a、如果checkbox需要水平排列，只需要在label标签上添加类名“checkbox-inline”
+			b、如果radio需要水平排列，只需要在label标签上添加类名“radio-inline”
+		-->
+		<form role="form">
+			<div class="form-group">
+				<label class="checkbox-inline">
+       				<input type="checkbox" value="option1">游戏
+  				</label>
+				<label class="checkbox-inline">
+       				<input type="checkbox" value="option2">摄影
+   				</label>
+				<label class="checkbox-inline">
+       				<input type="checkbox" value="option3">旅游
+   				</label>
+			</div>
+			<div class="form-group">
+				<label class="radio-inline">
+        			<input type="radio" value="option4">男性
+    			</label>
+				<label class="radio-inline">
+        			<input type="radio" value="option5">女性
+    			</label>
+				<label class="radio-inline">
+        			<input type="radio" value="option6">中性
+    			</label>
+			</div>
+		</form>
+		<!--2 button-->
+		<form>
+			<div>
+				<button class="btn btn" href="#">Default</button>
+			</div>
+			<div style="padding-top: 5px;">
+				<button class="btn btn-primary" href="#">Primary</button>
+			</div>
+			<div style="padding-top: 5px;">
+				<button class="btn btn-info" href="#">Primary</button>
+			</div>
+			<div style="padding-top: 5px;">
+				<button class="btn btn-success" href="#">Primary</button>
+			</div>
+			<div style="padding-top: 5px;">
+				<button class="btn btn-warning" href="#">Primary</button>
+			</div>
+			<div style="padding-top: 5px;">
+				<button class="btn btn-danger" href="#">Primary</button>
+			</div>
+			<div style="padding-top: 5px;">
+				<button class="btn btn-inverse" href="#">Primary</button>
+			</div>
+		</form>
+		<p></p>
+		<!--3、表单和按钮禁用：只需要在对应表单控件上添加属性disabled-->
+		<form role="form" class="form-horizontal">
+			<div class="form-group">
+				<div class="col-xs-6">
+					<input class="form-control input-lg" type="text" placeholder="不是焦点状态下效果">
+				</div>
+				<div class="col-xs-6">
+					<input class="form-control input-lg" id="" type="text" placeholder="表单已被禁用，不可输入" disabled>
+				</div>
+			</div>
+		</form>
+		<button class="btn btn-primary btn-lg btn-block" type="button" disabled="disabled">通过disabled属性禁用按钮</button>
+		<button class="btn btn-primary btn-block disabled" type="button">通过添加类名disabled禁用按钮</button>
+
+		<!--
+			4、图像
+			在Bootstrap框架中对于图像的样式风格提供以下几种风格：
+			1、img-responsive：响应式图片，主要针对于响应式设计
+			2、img-rounded：圆角图片
+			3、img-circle：圆形图片
+			4、img-thumbnail：缩略图片
+		-->
+		<p></p>
+		<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<img alt="140x140" src="http://placehold.it/140x140">
+				<div>默认图片</div>
+			</div>
+			<div class="col-sm-4">
+				<img class="img-rounded" alt="140x140" src="http://placehold.it/140x140">
+				<div>圆角图片</div>
+			</div>
+			<div class="col-sm-4">
+				<img class="img-circle" alt="140x140" src="http://placehold.it/140x140">
+				<div>圆形图片</div>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-sm-6">
+					<img class="img-thumbnail" alt="140x140" src="http://placehold.it/140x140">
+					<div>缩略图</div>
+				</div>
+				<div class="col-sm-6">
+					<img class="img-responsive" alt="140x140" src="http://placehold.it/140x140" />
+					<div>响应式图片</div>
+				</div>
+		</div>
+		</div>
+	</body>
+</html>
