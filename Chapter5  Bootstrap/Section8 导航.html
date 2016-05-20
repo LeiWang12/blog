@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>导航</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<style>
+			body {
+				margin: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--普通导航：在ul上增加.nav .nav-tabs样式-->
+		<ul class="nav nav-tabs">
+			<li><a href="##">Home</a></li>
+			<li><a href="##">CSS3</a></li>
+			<li><a href="##">Sass</a></li>
+			<li><a href="##">jQuery</a></li>
+			<li><a href="##">Responsive</a></li>
+		</ul>
+		<br>
+		<ul class="nav nav-tabs">
+			<!--选中状态,在li上增加.active样式 -->
+			<li class="active"><a href="##">Home</a></li>
+			<li><a href="##">CSS3</a></li>
+			<li><a href="##">Sass</a></li>
+			<li><a href="##">jQuery</a></li>
+			<!--禁用状态,在li上增加.disabled样式-->
+			<li class="disabled"><a href="##">Responsive</a></li>
+		</ul>
+		<br>
+		<!--胶囊形式,在ul上增加.nav .nav-pills样式-->
+		<ul class="nav nav-pills">
+			<li class="active"><a href="##">Home</a></li>
+			<li><a href="##">CSS3</a></li>
+			<li><a href="##">Sass</a></li>
+			<li><a href="##">jQuery</a></li>+
+			<li class="disabled"><a href="##">Responsive</a></li>
+		</ul>
+		<br>
+		<!--竖向排列的导航,在ul上增加.nav .nav-pills .nav-stacked样式-->
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><a href="##">Home</a></li>
+			<li><a href="##">CSS3</a></li>
+			<li><a href="##">Sass</a></li>
+			<li><a href="##">jQuery</a></li>
+			<li class="disabled"><a href="##">Responsive</a></li>
+		</ul>
+		<br>
+		<!--自适应导航,在ul上增加.nav .nav-tabs .nav-justified样式-->
+		<ul class="nav nav-tabs nav-justified">
+			<li class="active"><a href="##">Home</a></li>
+			<li><a href="##">CSS3</a></li>
+			<li><a href="##">Sass</a></li>
+			<li><a href="##">jQuery</a></li>
+			<li><a href="##">Responsive</a></li>
+		</ul>
+		<br>
+		<!--带二级菜单的导航条-->
+		<ul class="nav nav-pills">
+			<li class="active"><a href="##">首页</a></li>
+			<li class="dropdown">
+				<a href="##" class="dropdown-toggle" data-toggle="dropdown">教程<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="##">CSS3</a></li>
+					<li><a href="##">Sass</a></li>
+					<li><a href="##">jQuery</a></li>
+					<li><a href="##">Responsive</a></li>
+				</ul>
+			</li>
+			<li><a href="##">关于我们</a></li>
+		</ul>
+		<br>
+		<!--面包屑导航 在ol增加.breadcrumb样式-->
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li><a href="#">我的书</a></li>
+			<li class="active">《图解CSS3》</li>
+		</ol>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>

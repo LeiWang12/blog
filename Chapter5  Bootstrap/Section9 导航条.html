@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>导航条</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<style>
+			body {
+				margin: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			导航条（navbar）和上一节介绍的导航（nav），就相差一个字，多了一个“条”字。其实在Bootstrap框架中他们还是明显的区别。在导航条(navbar)中有一个背景色、而且导航条可以是纯链接（类似导航），也可以是表单，还有就是表单和导航一起结合等多种形式。在这一节中将一起探讨Bootstrap框架中导航条的使用
+		-->
+		<!--
+			使用方法:
+			第一步：首先在制作导航的列表(<ul class=”nav”>)基础上添加类名“navbar-nav”
+			第二步：在列表外部添加一个容器（div），并且使用类名“navbar”和“navbar-default”
+		-->
+		<div class="navbar navbar-default" role="navigation">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">网站首页</a></li>
+				<li><a href="##">系列教程</a></li>
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+			</ul>
+		</div>
+		<!--导航条状态及二级菜单-->
+		<div class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<a href="##" class="navbar-brand">慕课网</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">网站首页</a></li>
+				<li class="dropdown">
+					<a href="##" data-toggle="dropdown" class="dropdown-toggle">系列教程<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="##">CSS3</a></li>
+						<li><a href="##">JavaScript</a></li>
+						<li class="disabled"><a href="##">PHP</a></li>
+					</ul>
+				</li>
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+			</ul>
+			<!--导航条带表单-->
+			<form action="##" class="navbar-form navbar-left" rol="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="请输入关键词" />
+				</div>
+				<button type="submit" class="btn btn-default">搜索</button>
+			</form>
+		</div>
+		<!--
+			固定导航条:
+   			☑  .navbar-fixed-top：导航条固定在浏览器窗口顶部
+			☑  .navbar-fixed-bottom：导航条固定在浏览器窗口底部
+		-->
+		<div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+			<div class="navbar-header">
+				<a href="##" class="navbar-brand">慕课网</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">网站首页</a></li>
+				<li><a href="##">系列教程</a></li>
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+			</ul>
+		</div>
+		<!--
+			响应式导航:
+		-->
+		<div class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+         			<span class="sr-only">Toggle Navigation</span>
+         			<span class="icon-bar"></span>
+         			<span class="icon-bar"></span>
+         			<span class="icon-bar"></span>
+       			</button>
+				<!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+				<a href="##" class="navbar-brand">慕课网</a>
+			</div>
+			<!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+			<div class="collapse navbar-collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="##">网站首页</a></li>
+					<li><a href="##">系列教程</a></li>
+					<li><a href="##">名师介绍</a></li>
+					<li><a href="##">成功案例</a></li>
+					<li><a href="##">关于我们</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--反色导航 ，只是将navbar-deafult类名换成navbar-inverse-->
+		<div class="navbar navbar-inverse" role="navigation">
+			<div class="navbar-header">
+				<a href="##" class="navbar-brand">慕课网</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="">首页</a></li>
+				<li><a href="">教程</a></li>
+				<li><a href="">关于我们</a></li>
+			</ul>
+		</div>
+		<!--分页导航-->
+		<ul class="pagination pagination-lg">
+			<li><a href="#">&laquo;第一页</a></li>
+			<li><a href="#">11</a></li>
+			<li><a href="#">12</a></li>
+			<li class="active"><a href="#">13</a></li>
+			<li><a href="#">14</a></li>
+			<li><a href="#">15</a></li>
+			<li class="disabled"><a href="#">最后一页&raquo;</a></li>
+		</ul>
+
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>

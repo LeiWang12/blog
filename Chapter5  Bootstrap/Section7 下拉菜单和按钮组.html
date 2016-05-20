@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>下拉菜单和按钮组</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<style>
+			div {
+				margin: 10px 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			一、在Bootstrap框架中的下拉菜单组件是一个独立的组件
+			因为Bootstrap的组件交互效果都是依赖于jQuery库写的插件，所以在使用bootstrap.min.js之前一定要先加载jquery.min.js才会生效果
+			使用方法:
+			1、使用一个名为“dropdown”的容器包裹了整个下拉菜单元素
+			2、使用了一个<button>按钮做为父菜单，并且定义类名“dropdown-toggle”和自定义“data-toggle”属性，且值必须和最外容器类名一致
+			3、下拉菜单项使用一个ul列表，并且定义一个类名为“dropdown-menu”
+		-->
+		<!--
+		    实现原理：其实初始化时"dropdown-menu"样式display：none，当用户点击时会在div的class上添加open样式
+		-->
+		<!--
+		  分组:假设下拉菜单有两个组，那么组与组之间可以通过添加一个空的<li>，并且给这个<li>添加类名“divider”来实现添加下拉分隔线的功能
+		  	  通过添加“divider”可以将下拉菜单分组<li>，为了让这个分组更明显，还可以给每个组添加一个头部（标题）
+		-->
+		<!--
+		  对齐:在ul的“dropdown-menu”上添加一个“pull-right”或者“dropdown-menu-right”类名 表示与父容器右对齐
+			   加一个“pull-left”或者“dropdown-menu-left”表示与父容器左对齐
+		-->
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    			下拉菜单
+    		<span class="caret"></span>
+  			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">下拉菜单项</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">下拉菜单项</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">下拉菜单项</a></li>
+				<li role="presentation" class="divider"></li>
+				<li role="presentation" class="dropdown-header">第一部分菜单头部</li>
+				<!--禁用：在li上加class='disabled'	样式-->
+				<li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">下拉菜单项</a></li>
+			</ul>
+		</div>
+		<!--
+			二、按钮
+			1、使用一个名为“btn-group”的容器，把多个按钮放到这个容器中
+		-->
+		<div class="btn-group">
+			<button type="button" class="btn btn-default">按钮一</button>
+			<button type="button" class="btn btn-default">按钮二</button>
+			<button type="button" class="btn btn-default">按钮三</button>
+			<!--嵌套分组-->
+			<div class="btn-group">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">关于我们<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="##">公司简介</a></li>
+					<li><a href="##">企业文化</a></li>
+					<li><a href="##">组织结构</a></li>
+					<li><a href="##">客服服务</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--
+			2、等分按钮也常被称为是自适应分组按钮，其实现方法也非常的简单，只需要在按钮组“btn-group”上追加一个“btn-group-justified”类名
+		-->
+		<div class="btn-wrap">
+			<div class="btn-group btn-group-justified">
+				<a class="btn btn-default" href="#">首页</a>
+				<a class="btn btn-default" href="#">产品展示</a>
+				<a class="btn btn-default" href="#">案例分析</a>
+				<a class="btn btn-default" href="#">联系我们</a>
+			</div>
+		</div>
+
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>
