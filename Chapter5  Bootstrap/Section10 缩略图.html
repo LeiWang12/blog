@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>缩略图</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<!--
+			缩略图在网站中最常用的地方就是产品列表页面，一行显示几张图片，有的在图片底下（左侧或右侧）带有标题、描述等信息。Bootstrap框架将这一部独立成一个模块组件。并通过“thumbnail”样式配合bootstrap的网格系统来实现
+		-->
+		<!--
+			class="col-xs-6 col-md-3"
+			表示的是在宽屏幕（可视区域大于768px）的时候，一行显示四个缩略图(单击全屏查看效果)：
+			在窄屏（可视区域小于768px）的时候，一行只显示两个缩略图：
+		-->
+		<h1>简单的缩略图</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--
+			在仅有缩略图的基础上，添加了一个div名为“caption“的容器，在这个容器中放置其他内容，比如说标题，文本描述，按钮等
+		-->
+		<h1>复杂的缩略图</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;" alt="">
+					</a>
+					<div class="caption">
+						<h3>Bootstrap框架系列教程</h3>
+						<p>Bootstrap框架是一个优秀的前端框，就算您是一位后端程序员或者你是一位不懂设计的前端人员，你也能依赖于Bootstrap制作做优美的网站...</p>
+						<p>
+							<a href="##" class="btn btn-primary">开始学习</a>
+							<a href="##" class="btn btn-info">正在学习</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+					<div class="caption">
+						<h3>Bootstrap框架系列教程</h3>
+						<p> Bootstrap框架是一个优秀的前端框，就算您是一位后端程序员或者你是一位不懂设计的前端人员，你也能依赖于Bootstrap制作做优美的网站...</p>
+						<p>
+							<a href="##" class="btn btn-primary">开始学习</a>
+							<a href="##" class="btn btn-info">正在学习</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+					<div class="caption">
+						<h3>Bootstrap框架系列教程</h3>
+						<p>Bootstrap框架是一个优秀的前端框，就算您是一位后端程序员或者你是一位不懂设计的前端人员，你也能依赖于Bootstrap制作做优美的网站...</p>
+						<p>
+							<a href="##" class="btn btn-primary">开始学习</a>
+							<a href="##" class="btn btn-info">正在学习</a>
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img alt="100%x180" src="http://img.mukewang.com/5434eba100014fe906000338.png" style="height: 180px; width: 100%; display: block;">
+					</a>
+					<div class="caption">
+						<h3>Bootstrap框架系列教程</h3>
+						<p>Bootstrap框架是一个优秀的前端框，就算您是一位后端程序员或者你是一位不懂设计的前端人员，你也能依赖于Bootstrap制作做优美的网站...</p>
+						<p>
+							<a href="##" class="btn btn-primary">开始学习</a>
+							<a href="##" class="btn btn-info">正在学习</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>
