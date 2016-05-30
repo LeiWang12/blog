@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>警示框</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<!--
+			在Bootstrap框架有一个独立的组件，实现上述的效果，这个组件被称为警示框
+		          一、在默认情况下，有四种样式：
+		    	1、成功警示框：告诉用用户操作成功，在“alert”样式基础上追加“alert-success”样式，具体呈现的是背景、边框和文本都是绿色；
+  				2、信息警示框：给用户提供提示信息，在“alert”样式基础上追加“alert-info”样式，具体呈现的是背景、边框和文本都是浅蓝色；
+  				3、警告警示框：提示用户小心操作（提供警告信息），在“alert”样式基础上追加“alert-warning”样式，具体呈现的是背景、边框、文本都是浅黄色；
+  				4、错误警示框：提示用户操作错误，在“alert”样式基础上追加“alert-danger”样式，具体呈现的是背景、边框和文本都是浅红色。
+		          
+		          二、可关闭的警示框:
+		      	1、需要在基本警示框“alert”的基础上添加“alert-dismissable”样式。
+				2、在button标签中加入class="close"类，实现警示框关闭按钮的样式。
+				3、要确保关闭按钮元素上设置了自定义属性：“data-dismiss="alert"”（因为可关闭警示框需要借助于Javascript来检测该属性，从而控制警示框的关闭）
+			
+			三、警示框的链接
+				Bootstrap框架是通过给警示框加的链接添加一个名为“alert-link”的类名，通过“alert-link”样式给链接提供高亮显示
+			
+		-->
+		<h2>默认警示框</h2>
+		<div class="alert alert-success" role="alert">恭喜您操作成功！</div>
+		<div class="alert alert-info" role="alert">请输入正确的密码</div>
+		<div class="alert alert-warning" role="alert">您已操作失败两次，还有最后一次机会</div>
+		<div class="alert alert-danger" role="alert">对不起，您输入的密码有误</div>
+		<h2>可关闭的警示框</h2>
+		<div class="alert alert-success alert-dismissable" role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button> 恭喜您操作成功！
+		</div>
+		<div class="alert alert-info alert-dismissable" role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button> 请输入正确的密码
+		</div>
+		<div class="alert alert-warning alert-dismissable" role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button> 您已操作失败两次，还有最后一次机会
+		</div>
+		<div class="alert alert-danger alert-dismissable" role="alert">
+			<button class="close" type="button" data-dismiss="alert">&times;</button> 对不起，您输入的密码有误
+		</div>
+		<h2>警示框的链接</h2>
+		<div class="alert alert-success" role="alert">
+			<strong>Well done!</strong> You successfully read
+			<a href="#" class="alert-link">this important alert message</a> .
+		</div>
+		<div class="alert alert-info" role="alert">
+			<strong>Heads up!</strong> This
+			<a href="#" class="alert-link">alert needs your attention</a> , but it's not super important.
+		</div>
+		<div class="alert alert-warning" role="alert">
+			<strong>Warning!</strong> Better check yourself, you're
+			<a href="#" class="alert-link">not looking too good</a> .
+		</div>
+		<div class="alert alert-danger" role="alert">
+			<strong>Oh snap!</strong>
+			<a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+		</div>
+
+
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>

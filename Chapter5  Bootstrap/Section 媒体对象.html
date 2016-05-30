@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>媒体对象</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<!--
+			媒体对象一般是成组出现，而一组媒体对象常常包括以下几个部分：
+ 			☑   媒体对像的容器：常使用“media”类名表示，用来容纳媒体对象的所有内容
+  			☑  媒体对像的对象：常使用“media-object”表示，就是媒体对象中的对象，常常是图片
+			☑  媒体对象的主体：常使用“media-body”表示，就是媒体对像中的主体内容，可以是任何元素，常常是图片侧边内容
+  			☑  媒体对象的标题：常使用“media-heading”表示，就是用来描述对象的一个标题，此部分可选
+		-->
+		<h3>默认媒体对象</h3>
+		<div class="media">
+			<a class="pull-left" href="#">
+				<img class="media-object" src="logo.png" alt="...">
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading">内容标题</h4>
+				<div>列表内容列表内容列表内容列表内容列表内容列表内容</div>
+			</div>
+		</div>
+		
+		<!--
+			从外往里看，这里有三个媒体对象，只不过是一个嵌套在另一个的里面。那么在Bootstrap框架中的媒体对象也具备这样的功能，只需要将另一个媒体对象结构放置在媒体对象的主体内“media-body”
+		-->
+		<h3>媒体对象的嵌套</h3>
+		<div class="media">
+			<a class="pull-left" href="#">
+				<img class="media-object" src="logo.png" alt="...">
+			</a>
+			<div class="media-body">
+				<h4 class="media-heading">标题1</h4>
+				<div>第一层媒体对象内容</div>
+				<div class="media">
+					<a class="pull-left" href="#">
+						<img class="media-object" src="logo.png" alt="...">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">标题2</h4>
+						<div>第二层媒体对象内容</div>
+						<div class="media">
+							<a class="pull-left" href="#">
+								<img class="media-object" src="logo.png" alt="...">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">标题3</h4>
+								<div>第三层媒体对象内容</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--
+			Bootstrap框架提供了一个列表展示的效果，在写结构的时候可以使用ul，并且在ul上添加类名“media-list”，而在li上使用“media”
+		-->
+		<h3>媒体对象列表</h3>
+		<ul class="media-list">
+			<li class="media">
+				<a class="pull-left" href="#">
+					<img class="media-object" src="logo.png" alt="...">
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">第一个标题</h4>
+					<div>第一个对象内容</div>
+				</div>
+			</li>
+			<li class="media">
+				<a class="pull-left" href="#">
+					<img class="media-object" src="logo.png" alt="...">
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">第二个标题</h4>
+					<div>第二个对象内容</div>
+				</div>
+			</li>
+			<li class="media">
+				<a class="pull-left" href="#">
+					<img class="media-object" src="logo.png" alt="...">
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">第三个标题</h4>
+					<div>第三个对象内容</div>
+				</div>
+			</li>
+		</ul>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>
