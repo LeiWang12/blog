@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>列表组</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<style>
+			body {
+				padding: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			基础列表组，看上去就是去掉了列表符号的列表项，并且配上一些特定的样式。在Bootstrap框架中的基础列表组主要包括两个部分：
+			list-group：列表组容器，常用的是ul元素，当然也可以是ol或者div元素
+			list-group-item：列表项，常用的是li元素，当然也可以是div元素
+		-->
+		<h3>基础列表组</h3>
+		<ul class="list-group">
+			<li class="list-group-item">揭开CSS3的面纱</li>
+			<li class="list-group-item">CSS3选择器</li>
+			<li class="list-group-item">CSS3边框</li>
+			<li class="list-group-item">CSS3背景</li>
+			<li class="list-group-item">CSS3文本</li>
+		</ul>
+		<!--
+			带徽章的列表组其实就是将Bootstrap框架中的徽章组件和基础列表组结合在一起的一个效果。具体做法很简单，只需要在“list-group-item”中添加徽章组件“badge”
+		-->
+		<h3>带徽章的列表组</h3>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<span class="badge">13</span>揭开CSS3的面
+			</li>
+			<li class="list-group-item">
+				<span class="badge">456</span>CSS3选择器
+			</li>
+			<li class="list-group-item">
+				<span class="badge">892</span>CSS3边框
+			</li>
+			<li class="list-group-item">
+				<span class="badge">90</span>CSS3背景
+			</li>
+			<li class="list-group-item">
+				<span class="badge">1290</span>CSS3文本
+			</li>
+		</ul>
+		<!--
+			给list-group-item的li内容添加超链接a
+		-->
+		<h3>带链接的列表组</h3>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<a href="##">揭开CSS3的面</a>
+			</li>
+			<li class="list-group-item">
+				<a href="##">CSS3选择器</a>
+			</li>
+			<li class="list-group-item">
+				<a href="##">CSS3边框</a>
+			</li>
+			<li class="list-group-item">
+				<a href="##">CSS3背景</a>
+			</li>
+			<li class="list-group-item">
+				<a href="##">CSS3文本</a>
+			</li>
+		</ul>
+		<!--
+			将ul.list-group使用div.list-group来替换，而li.list-group-item直接用a.list-group-item来替换
+		-->
+		<h3>自定义列表组</h3>
+		<div class="list-group">
+			<a href="##" class="list-group-item">
+				<h4 class="list-group-item-heading">图解CSS3</h4>
+				<p class="list-group-item-text">详细讲解了选择器、边框、背景、文本、颜色、盒模型、伸缩布局盒模型、多列布局、渐变、过渡、动画、媒体、响应Web设计、Web字体等主题下涵盖的所有CSS3新特性...</p>
+			</a>
+			<a href="##" class="list-group-item">
+				<h4 class="list-group-item-heading">Sass中国</h4>
+				<p class="list-group-item-text">致力于为中国开发者提供最全面，最具影响力，最前沿的Sass相关技术与教程...</p>
+			</a>
+		</div>
+		<!--
+			ootstrap框架也给组合列表项提供了状态效果，特别是链接列表组。比如常见状态和禁用状态等。实现方法和前面介绍的组件类似，在列表组中只需要在对应的列表项中添加类名：
+			1、active：表示当前状态
+			2、disabled：表示禁用状态
+		-->
+		<h3>组合列表项的状态</h3>
+		<div class="list-group">
+			<a href="##" class="list-group-item active"><span class="badge">5902</span>图解CSS3</a>
+			<a href="##" class="list-group-item"><span class="badge">15902</span>W3cplus</a>
+			<a href="##" class="list-group-item"><span class="badge">59020</span>慕课网</a>
+			<a href="##" class="list-group-item disabled"><span class="badge">0</span>Sass中国</a>
+		</div>
+		<!--
+			列表组组件和警告组件一样，Bootstrap为不同的状态提供了不同的背景颜色和文本色，可以使用这几个类名定义不同背景色的列表项。
+			1、list-group-item-success：成功，背景色绿色
+			2、list-group-item-info：信息，背景色蓝色
+			3、list-group-item-warning：警告，背景色为黄色
+			4、list-group-item-danger：错误，背景色为红色
+			如果你想给列表项添加什么背景色，只需要在“list-group-item”基础上增加对应的类名：
+		-->
+		<h3>多彩列表组</h3>
+		<div class="list-group">
+			<a href="##" class="list-group-item active"><span class="badge">5902</span>图解CSS3</a>
+			<a href="##" class="list-group-item list-group-item-success"><span class="badge">15902</span>W3cplus</a>
+			<a href="##" class="list-group-item list-group-item-info"><span class="badge">59020</span>慕课网</a>
+			<a href="##" class="list-group-item list-group-item-warning"><span class="badge">0</span>Sass中国</a>
+			<a href="##" class="list-group-item list-group-item-danger"><span class="badge">10</span>Mobile教程</a>
+		</div>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>
