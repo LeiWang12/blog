@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>导入JavaScript插件</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	</head>
+
+	<body>
+		<!--
+			第一种：js触发模态弹出框
+		-->
+		<button class="btn btn-primary" type="button" id="btn1">模态弹出框</button>
+		<div class="modal" id="mymodal">
+			<div class="modal-dialog">
+				<!--内容区域-->
+				<div class="modal-content">
+					<!--头部-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">模态弹出窗标题</h4>
+					</div>
+					<!--内容-->
+					<div class="modal-body">
+						<p>模态弹出窗主体内容</p>
+					</div>
+					<!--底部-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br>
+		
+		<!--
+			第二种：通过data-target触发模态弹出框
+		-->
+		<button class="btn btn-primary"    data-toggle="modal" data-target="#mymodal2"  type="button">动画模态弹出框</button>
+		<!--只需要在div的样式中增加动画：fade-->
+		<div class="modal fade" id="mymodal2">
+			<div class="modal-dialog">
+				<!--内容区域-->
+				<div class="modal-content">
+					<!--头部-->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">模态弹出窗标题</h4>
+					</div>
+					<!--内容-->
+					<div class="modal-body">
+						<p>模态弹出窗主体内容</p>
+					</div>
+					<!--底部-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script>
+			$(function() {
+				$("#btn1").click(function() {
+					$("#mymodal").modal("toggle");
+				});
+				
+			});
+		</script>
+	</body>
+
+</html>
