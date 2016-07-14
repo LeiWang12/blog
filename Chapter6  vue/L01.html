@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>vuejs介绍</title>
+	</head>
+
+	<body>
+		<!--
+			在学习vuejs框架之前，我们需要了解下面两个问题：
+			1、框架和类库的区别？
+			答：类库是把某些基础方法或函数进行了封装，提高开发者的学习速度和开发效率(比如：JQuery)，通俗的讲比如现在要制作一张木桌，类库就相当于已经成型的
+			       木腿(圆形)和木板(方形)，我们只需要挑选合适的木头进行组装，一个木桌就制作完成。它并没有改变你制作木桌的过程，只是简化了一些步骤，类库替我们完成。
+			       框架比类库就更高级点了，它更多是思想或者原理上的封装，它给你提供了实现一个功能的另一条路径。它与类库并不对立，只是给你盖了一个木头加工厂，在这里
+			       你可以制作各种形状的木腿和木板，你不仅可以制作桌子、凳子，还可以制作各种木制产品。总之，框架改变了你原来用类库制作东西的单一思路，给了你更大的发挥空间。
+			2、什么是mvvm？
+			答：mvvm是从mvc转化而来，
+			   mvc架构的工作流程：a:View 传送指令到 Controller; b:Controller 完成业务逻辑后，要求 Model 改变状态;c:Model 将新的数据发送到 View，用户得到反馈
+			   mvc中的c(控制器)变成ViewModel，View和Model之间没有直接联系，而都是与ViewModel进行双向互动，最大的特点是View或Model的变化，会自动触发Model和View的变化。
+		
+			vuejs就属于MVVM框架,类似的还有react、angular，它的目标是通过尽可能简单的 API实现响应的数据绑定和组合的视图组件。
+			1、首先我们看下响应的数据绑定:
+			      之前我们用JQuery操作DOM、获取数据都是命令式的，都是人工的使用JQuery去把数据渲染在DOM节点中，而vuejs在底层做了一个DOM与数据的绑定，
+			      只要绑定成功后，V(视图)中的数据变化会自动改变M(数据)中数据，反之亦然，这被称为数据双向绑定，这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+			
+			2、其次是组合的视图组件
+			   vuejs可以把一个大页面拆分成一个个小的模块，而这些模块是可以独立复用的，这一个个独立的模块就是组件。
+			      组件开发更适合大型应用，将组件分发给不同的开发人员，可以提高工作效率，同时也便于代码的维护。
+		-->
+		<!--下面我们用代码来了解一下vuejs-->
+		
+		<!--使用方法：引入vue.js-->
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+		
+		<!--单项绑定-->
+		
+		<!--view层-->
+		<div id="app1">
+			{{ message }}
+		</div>
+		<script>
+		    //ViewModel层
+			new Vue({
+				el: '#app1',
+				//model层
+				data: {
+					message: 'Hello Vue.js!',
+				}
+			})
+		</script>
+
+		<!--双向绑定-->
+		<div id="app2">
+			<p>{{ message }}</p>
+			<input v-model="message">
+		</div>
+		<script>
+			new Vue({
+				el: '#app2',
+				data: {
+					message: 'Hello Vue.js!'
+				}
+			})
+		</script>
+
+		<!--渲染列表-->
+		<div id="app3">
+			<ul>
+				<li v-for="todo in todos">
+					{{ todo.text }}
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: '#app3',
+				data: {
+					todos: [{
+						text: 'Learn JavaScript'
+					}, {
+						text: 'Learn Vue.js'
+					}, {
+						text: 'Build Something Awesome'
+					}]
+				}
+			})
+		</script>
+
+		<!--处理用户输入-->
+		<div id="app4">
+			<p>{{ message }}</p>
+			<p>{{ "ok"?"1":"2" }}</p>
+			<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
+		<script>
+			new Vue({
+				el: '#app4',
+				data: {
+					message: 'Hello Vue.js!'
+				},
+				methods: {
+					reverseMessage: function() {
+						this.message = this.message.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+
+		<!--综合实例-->
+		<div id="app5">
+			<input v-model="newTodo" v-on:keyup.enter="addTodo">
+			<ul>
+				<li v-for="todo in todos">
+					<span>{{ todo.text }}</span>
+					<button v-on:click="removeTodo($index)">X</button>
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: '#app5',
+				data: {
+					newTodo: '',
+					todos: [{
+						text: 'Add some todos'
+					}]
+				},
+				methods: {
+					addTodo: function() {
+						var text = this.newTodo.trim()
+						if (text) {
+							this.todos.push({
+								text: text
+							})
+							this.newTodo = ''
+						}
+					},
+					removeTodo: function(index) {
+						this.todos.splice(index, 1)
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>
